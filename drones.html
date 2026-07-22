@@ -47,6 +47,18 @@
         </nav>
     </header>
 
+    <div class="scroll-drone" id="scroll-drone" aria-hidden="true">
+        <iframe class="flight-model" title="Modelo 3D de dron durante el recorrido" loading="eager" tabindex="-1" allow="autoplay; fullscreen; xr-spatial-tracking" src="https://sketchfab.com/models/36365bad0ebd46428e6241676725dcec/embed?autostart=1&amp;transparent=1&amp;ui_infos=0&amp;ui_controls=0&amp;ui_general_controls=0&amp;ui_animations=0&amp;ui_annotations=0&amp;ui_help=0&amp;ui_inspector=0&amp;ui_fullscreen=0&amp;ui_stop=0&amp;ui_hint=0&amp;ui_watermark=0&amp;ui_watermark_link=0"></iframe>
+        <div class="drone-model">
+            <span class="drone-shadow"></span>
+            <span class="drone-arm drone-arm--nw"><span class="drone-motor"><i></i></span></span>
+            <span class="drone-arm drone-arm--ne"><span class="drone-motor"><i></i></span></span>
+            <span class="drone-arm drone-arm--sw"><span class="drone-motor"><i></i></span></span>
+            <span class="drone-arm drone-arm--se"><span class="drone-motor"><i></i></span></span>
+            <span class="drone-body"><b class="drone-battery"></b><b class="drone-gps"></b><b class="drone-camera"></b></span>
+        </div>
+    </div>
+
     <main>
         <section class="hero" id="inicio">
             <div class="hero__grid" aria-hidden="true"></div>
@@ -201,6 +213,20 @@
                         Un dron moderno es un sistema formado por diferentes componentes electrónicos y mecánicos que trabajan
                         de forma coordinada para controlar el vuelo.
                     </p>
+                </div>
+
+                <div class="anatomy-stage" id="anatomy-stage">
+                    <div class="anatomy-callouts anatomy-callouts--left">
+                        <div class="anatomy-callout"><b>01</b><span><strong>Hélices y motores</strong><small>Generan el empuje y controlan cada maniobra.</small></span></div>
+                        <div class="anatomy-callout"><b>02</b><span><strong>Chasis y brazos</strong><small>La estructura que une y protege los sistemas.</small></span></div>
+                        <div class="anatomy-callout"><b>03</b><span><strong>Cámara y gimbal</strong><small>Captura imagen estable durante el vuelo.</small></span></div>
+                    </div>
+                    <iframe class="anatomy-model" title="Modelo 3D interactivo de un dron DJI Tello" loading="lazy" allow="autoplay; fullscreen; xr-spatial-tracking" src="https://sketchfab.com/models/36365bad0ebd46428e6241676725dcec/embed?autostart=1&amp;transparent=1&amp;ui_infos=0&amp;ui_controls=0&amp;ui_general_controls=0&amp;ui_animations=0&amp;ui_annotations=0&amp;ui_help=0&amp;ui_inspector=0&amp;ui_fullscreen=0&amp;ui_stop=0&amp;ui_hint=0&amp;ui_watermark=0&amp;ui_watermark_link=0"></iframe>
+                    <div class="anatomy-callouts anatomy-callouts--right">
+                        <div class="anatomy-callout"><b>04</b><span><strong>Batería</strong><small>Alimenta motores, cámara y controladora.</small></span></div>
+                        <div class="anatomy-callout"><b>05</b><span><strong>GPS / IMU</strong><small>Ayudan a conocer posición, orientación y movimiento.</small></span></div>
+                    </div>
+                    <p class="anatomy-credit">Modelo 3D: <a href="https://sketchfab.com/3d-models/dji-tello-36365bad0ebd46428e6241676725dcec" target="_blank" rel="noopener">DJI Tello por Temoor</a> · CC Attribution</p>
                 </div>
 
                 <div class="grid grid--3">
