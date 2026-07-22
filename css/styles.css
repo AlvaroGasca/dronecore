@@ -353,6 +353,28 @@ button {
     margin-top: 5rem;
 }
 
+/* =========================================
+   VIAJAR CON EL DRON
+   ========================================= */
+
+/* Separación entre las tarjetas de países y la checklist */
+#viajes .grid.grid--2 + .travel-checklist-title {
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+}
+
+/* Separación entre el título y la lista */
+#viajes .travel-checklist-title + .checklist {
+    margin-top: 1.25rem !important;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    #viajes .grid.grid--2 + .travel-checklist-title {
+        margin-top: 3rem;
+    }
+}
+
 /* Dron CSS 3D que acompaña el recorrido de la página de tecnología. */
 .scroll-drone {
     --flight-x: 125vw;
@@ -1725,6 +1747,16 @@ button {
 
 .content-section>.grid {
     margin-top: 2rem;
+}
+
+/* Separación entre las tarjetas de información y la checklist de viaje */
+#viajes .grid.grid--2 + .travel-checklist-title {
+    margin-top: 4rem;
+}
+
+/* Separación entre el título y la lista */
+#viajes .travel-checklist-title + .checklist {
+    margin-top: 1.25rem !important;
 }
 
 .search-wrap {
