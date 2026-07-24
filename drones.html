@@ -1,428 +1,269 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Descubre qué es un dron, cómo funciona, qué tipos existen y cuáles son sus principales componentes y sistemas.">
-    <meta property="og:title" content="Todo sobre drones | DroneCore">
-    <meta property="og:description" content="Tecnología, tipos y componentes explicados con claridad.">
-    <meta name="theme-color" content="#070b0f">
+    <meta name="description" content="Descubre qué es un dron, cómo funciona, tipos de aeronaves UAV y sus componentes principales.">
     <title>Drones — DroneCore</title>
+    
+    <!-- Tipografía Inter & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/drones.css">
 </head>
+<body class="page-drones">
 
-<body>
-    <header class="site-header">
-        <div class="container site-header__inner">
-            <a class="site-logo" href="index.html" aria-label="DroneCore, volver al inicio">
-                <span class="site-logo__mark" aria-hidden="true">DC</span>
-                <span class="site-logo__text">DRONE<span>CORE</span></span>
+    <!-- Navegación Glassmorphism (Sin 'Inicio', 6 secciones globales) -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo" aria-label="Ir al inicio">
+                <span class="logo-mark">DC</span> DRONECORE
             </a>
-
-            <nav class="site-nav" aria-label="Navegación principal">
-                <a class="nav-link" href="index.html">Inicio</a>
-                <a class="nav-link is-active" href="drones.html" aria-current="page">Drones</a>
-                <a class="nav-link" href="normativa.html">Normativa</a>
-                <a class="nav-link" href="titulaciones.html">Titulaciones</a>
-                <a class="nav-link" href="mapas.html">Mapas</a>
-                <a class="nav-link" href="recursos.html">Recursos</a>
-                <a class="nav-link" href="faq.html">FAQ</a>
+            <nav class="nav-links">
+                <a href="drones.html" class="active">DRONES</a>
+                <a href="normativa.html">NORMATIVA</a>
+                <a href="titulaciones.html">TITULACIONES</a>
+                <a href="mapas.html">MAPAS</a>
+                <a href="recursos.html">RECURSOS</a>
+                <a href="faq.html">FAQ</a>
             </nav>
-
-            <div class="header-actions"><button class="theme-toggle" type="button" aria-label="Cambiar tema"><i
-                        class="fa-solid fa-moon"></i></button><button class="nav-toggle" type="button"
-                    aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-nav">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button></div>
+            <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema"></button>
         </div>
-
-        <nav class="mobile-nav" id="mobile-nav" aria-label="Navegación móvil" aria-hidden="true">
-            <a class="nav-link" href="index.html">Inicio</a>
-            <a class="nav-link is-active" href="drones.html" aria-current="page">Drones</a>
-            <a class="nav-link" href="normativa.html">Normativa</a>
-            <a class="nav-link" href="titulaciones.html">Titulaciones</a>
-            <a class="nav-link" href="mapas.html">Mapas</a>
-            <a class="nav-link" href="recursos.html">Recursos</a>
-            <a class="nav-link" href="faq.html">FAQ</a>
-        </nav>
     </header>
 
     <main>
-        <section class="hero" id="inicio">
-            <div class="hero__media" aria-hidden="true">
-                <video class="hero__video" autoplay muted loop playsinline preload="auto">
-                    <source src="img/drone-motion-2.mp4" type="video/mp4">
-                </video>
-                <div class="hero__overlay"></div>
-            </div>
-            <div class="hero__grid" aria-hidden="true"></div>
-            <div class="container hero__content">
-                <p class="hero__eyebrow">// DRONECORE / TECNOLOGÍA UAV</p>
-                <h1 class="hero__title">Entiende la máquina que <span>hace posible el vuelo</span>.</h1>
-                <p class="hero__description">
-                    Un dron es mucho más que una cámara con hélices. Descubre cómo se construye una aeronave no
-                    tripulada,
-                    qué sistemas necesita para volar y cómo trabajan juntos para mantenerla estable y bajo control.
-                </p>
-                <div class="hero__actions">
-                    <a class="btn btn--primary" href="#que-es">Empezar por lo básico <span
-                            aria-hidden="true">↓</span></a>
-                    <a class="btn btn--secondary" href="#componentes">Ver componentes</a>
-                </div>
-
-                <div class="hero__stats grid grid--3">
-                    <article class="data-card">
-                        <span class="data-card__label">01 / CONCEPTO</span>
-                        <strong class="data-card__value">UAV / UAS / RPAS</strong>
-                        <span class="data-card__meta">Conceptos y terminología</span>
-                    </article>
-                    <article class="data-card">
-                        <span class="data-card__label">02 / AERONAVES</span>
-                        <strong class="data-card__value">Multirrotor / Ala fija</strong>
-                        <span class="data-card__meta">Tipos y configuraciones</span>
-                    </article>
-                    <article class="data-card">
-                        <span class="data-card__label">03 / SISTEMAS</span>
-                        <strong class="data-card__value">Sensores / Control / Energía</strong>
-                        <span class="data-card__meta">La tecnología del vuelo</span>
-                    </article>
+        <!-- HERO DE PÁGINA INTERNA (Flexible y Centrado) -->
+        <section id="inicio" class="hero-cinematic">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="img/drone-forest-2.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            
+            <div class="container hero-content-clean">
+                <span class="tech-badge-glow"><i class="fa-solid fa-microchip"></i> TECNOLOGÍA UAV / 2026</span>
+                <h1>Entiende la máquina que <span class="text-gradient">hace posible el vuelo</span>.</h1>
+                <p class="hero-subtitle">Un dron es mucho más que una cámara con hélices. Descubre cómo se construye, qué sistemas necesita para volar y cómo interactúan entre sí en tiempo real.</p>
+                <div class="hero-cta-group">
+                    <a href="#que-es" class="btn-apple-primary"><i class="fa-solid fa-arrow-down"></i> Empezar exploración</a>
+                    <a href="#componentes" class="btn-apple-link">Ver Anatomía ↗</a>
                 </div>
             </div>
         </section>
 
+        <!-- SECCIÓN 01: CONCEPTOS BÁSICOS -->
         <section class="section" id="que-es">
             <div class="container">
-                <div class="section__header section__header--split">
-                    <div>
-                        <p class="section__eyebrow">01 / CONCEPTOS BÁSICOS</p>
-                        <h2 class="section__title">¿Qué es realmente un dron?</h2>
-                    </div>
-                    <p class="section__description">
-                        En el lenguaje cotidiano utilizamos «dron» para referirnos a muchos tipos de aeronaves no
-                        tripuladas.
-                        Sin embargo, existen varios términos que conviene diferenciar.
+                <div class="section-header">
+                    <p class="eyebrow">01 / CONCEPTOS BÁSICOS</p>
+                    <h2>¿Qué es realmente un dron?</h2>
+                    <p class="section-lead">
+                        En el lenguaje cotidiano utilizamos «dron» para todo. Sin embargo, la industria diferencia tres conceptos clave según el enfoque operativo.
                     </p>
                 </div>
 
-                <div class="grid grid--3">
-                    <article class="glass-card glass-card--featured">
-                        <div class="icon-box" aria-hidden="true">UAV</div>
+                <div class="bento-grid">
+                    <div class="bento-box">
+                        <div class="bento-icon"><i class="fa-solid fa-plane-up"></i></div>
+                        <span class="status status-blue"><span class="pulse-dot"></span> VEHÍCULO</span>
                         <h3>UAV</h3>
-                        <p>
-                            <strong>Unmanned Aerial Vehicle</strong>. Hace referencia a la aeronave que puede volar sin
-                            un piloto
-                            a bordo. Es el vehículo aéreo no tripulado en sí mismo.
-                        </p>
-                    </article>
-                    <article class="glass-card">
-                        <div class="icon-box" aria-hidden="true">UAS</div>
+                        <p><strong>Unmanned Aerial Vehicle</strong>. Hace referencia a la aeronave física que vuela sin piloto a bordo.</p>
+                    </div>
+                    <div class="bento-box">
+                        <div class="bento-icon"><i class="fa-solid fa-network-wired"></i></div>
+                        <span class="status status-cyan"><span class="pulse-dot"></span> SISTEMA INTEGRAL</span>
                         <h3>UAS</h3>
-                        <p>
-                            <strong>Unmanned Aircraft System</strong>. Es un concepto más amplio: incluye la aeronave y
-                            todos los
-                            elementos necesarios para su operación, como la estación de control y otros sistemas
-                            asociados.
-                        </p>
-                    </article>
-                    <article class="glass-card">
-                        <div class="icon-box" aria-hidden="true">RPAS</div>
+                        <p><strong>Unmanned Aircraft System</strong>. El concepto completo: la aeronave + la estación de control + enlaces de mando.</p>
+                    </div>
+                    <div class="bento-box bento-wide">
+                        <div class="bento-icon"><i class="fa-solid fa-gamepad"></i></div>
+                        <span class="status status-purple"><span class="pulse-dot"></span> OPERACIÓN REMOTA</span>
                         <h3>RPAS</h3>
-                        <p>
-                            <strong>Remotely Piloted Aircraft System</strong>. Se utiliza para sistemas de aeronaves
-                            pilotadas
-                            remotamente, donde existe un piloto remoto responsable de la operación.
-                        </p>
-                    </article>
+                        <p><strong>Remotely Piloted Aircraft System</strong>. Término reglamentario cuando un piloto remoto mantiene la responsabilidad directa del vuelo.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="section section--dark" id="tipos">
+        <!-- SECCIÓN 02: TIPOS DE DRONES -->
+        <section class="section section-dark" id="tipos">
             <div class="container">
-                <div class="section__header">
-                    <p class="section__eyebrow">02 / TIPOS DE DRONES</p>
-                    <h2 class="section__title">No todos los drones vuelan igual.</h2>
-                    <p class="section__description">
-                        La configuración de una aeronave determina cómo despega, cuánto tiempo puede permanecer en el
-                        aire,
-                        cómo maniobra y para qué tipo de misión resulta más adecuada.
-                    </p>
+                <div class="section-header">
+                    <p class="eyebrow">02 / ARQUITECTURA DE VUELO</p>
+                    <h2>No todos los drones vuelan igual.</h2>
+                    <p class="section-lead">La geometría y disposición de motores determina la velocidad, estabilidad y autonomía de la misión.</p>
                 </div>
 
-                <div class="grid grid--3">
-                    <article class="tech-card">
-                        <span class="tech-card__number">01 / MULTIRROTOR</span>
+                <div class="cards-grid">
+                    <div class="card card-interactive">
+                        <div class="card-icon-header">
+                            <i class="fa-solid fa-fan"></i>
+                            <span class="card-tag">Alta Maniobra</span>
+                        </div>
                         <h3>Multirrotores</h3>
-                        <p>
-                            Utilizan varios motores y hélices para generar sustentación y controlar el movimiento. Son
-                            muy
-                            maniobrables y pueden mantenerse en vuelo estacionario.
-                        </p>
-                        <span class="card-link">Estabilidad / Maniobrabilidad</span>
-                    </article>
-                    <article class="tech-card">
-                        <span class="tech-card__number">02 / ALA FIJA</span>
-                        <h3>Ala fija</h3>
-                        <p>
-                            Su diseño se basa en alas que generan sustentación durante el avance. Son eficientes para
-                            cubrir
-                            grandes distancias, aunque normalmente necesitan espacio o un método específico para
-                            despegar y aterrizar.
-                        </p>
-                        <span class="card-link">Autonomía / Eficiencia</span>
-                    </article>
-                    <article class="tech-card">
-                        <span class="tech-card__number">03 / HÍBRIDOS</span>
-                        <h3>VTOL e híbridos</h3>
-                        <p>
-                            Combinan características de los multirrotores y del ala fija. Pueden despegar verticalmente
-                            y después
-                            aprovechar un vuelo más eficiente hacia delante.
-                        </p>
-                        <span class="card-link">Versatilidad / Alcance</span>
-                    </article>
-                </div>
+                        <p>Generan sustentación mediante hélices de tiro vertical. Destacan por el vuelo estacionario de precisión y maniobras en espacios estrechos.</p>
+                    </div>
 
-                <div class="grid grid--4" style="margin-top: 1.25rem;">
-                    <article class="data-card">
-                        <span class="data-card__label">CONFIGURACIÓN</span>
-                        <strong class="data-card__value">Quadcopter</strong>
-                        <span class="data-card__meta">4 motores</span>
-                    </article>
-                    <article class="data-card">
-                        <span class="data-card__label">CONFIGURACIÓN</span>
-                        <strong class="data-card__value">Hexacopter</strong>
-                        <span class="data-card__meta">6 motores</span>
-                    </article>
-                    <article class="data-card">
-                        <span class="data-card__label">CONFIGURACIÓN</span>
-                        <strong class="data-card__value">Octocopter</strong>
-                        <span class="data-card__meta">8 motores</span>
-                    </article>
-                    <article class="data-card">
-                        <span class="data-card__label">CONFIGURACIÓN</span>
-                        <strong class="data-card__value">Cinewhoop</strong>
-                        <span class="data-card__meta">Protección / FPV</span>
-                    </article>
+                    <div class="card card-interactive">
+                        <div class="card-icon-header">
+                            <i class="fa-solid fa-plane"></i>
+                            <span class="card-tag">Gran Autonomía</span>
+                        </div>
+                        <h3>Ala Fija</h3>
+                        <p>Sus alas generan sustentación aerodinámica al avanzar. Permiten cubrir cientos de hectáreas consumiendo una fracción de energía.</p>
+                    </div>
+
+                    <div class="card card-interactive">
+                        <div class="card-icon-header">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span class="card-tag">Híbrido VTOL</span>
+                        </div>
+                        <h3>VTOL e Híbridos</h3>
+                        <p>Despegan y aterrizan en vertical como un multirrotor, pero conmutan a modo crucero de ala fija para maximizar el alcance.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- SECCIÓN 03: ANATOMÍA DE UN DRON -->
         <section class="section" id="componentes">
             <div class="container">
-                <div class="section__header section__header--split">
-                    <div>
-                        <p class="section__eyebrow">03 / ANATOMÍA DE UN DRON</p>
-                        <h2 class="section__title">Cada pieza tiene una misión.</h2>
-                    </div>
-                    <p class="section__description">
-                        Un dron moderno es un sistema formado por diferentes componentes electrónicos y mecánicos que
-                        trabajan
-                        de forma coordinada para controlar el vuelo.
-                    </p>
+                <div class="section-header">
+                    <p class="eyebrow">03 / ANATOMÍA DE UN DRON</p>
+                    <h2>Cada pieza tiene una misión.</h2>
+                    <p class="section-lead">Sistemas mecánicos y electrónicos sincronizados para reaccionar en milisegundos.</p>
                 </div>
 
-                <div class="grid grid--3">
-                    <article class="hud-card">
-                        <span class="status status--active">01 / ESTRUCTURA</span>
+                <div class="cards-grid">
+                    <div class="card component-card">
+                        <div class="component-header">
+                            <span class="status status-blue"><i class="fa-solid fa-shield-halved"></i> ESTRUCTURA</span>
+                        </div>
                         <h3>Chasis y brazos</h3>
-                        <p>Es la estructura física que sostiene los componentes. Su diseño influye en el peso, la
-                            resistencia y la distribución de masas.</p>
-                    </article>
-                    <article class="hud-card">
-                        <span class="status status--active">02 / PROPULSIÓN</span>
-                        <h3>Motores y hélices</h3>
-                        <p>Transforman la energía eléctrica en empuje. La combinación entre motor y hélice determina
-                            buena parte del comportamiento del dron.</p>
-                    </article>
-                    <article class="hud-card">
-                        <span class="status status--active">03 / ENERGÍA</span>
-                        <h3>Batería</h3>
-                        <p>Almacena la energía necesaria para alimentar los sistemas. Su capacidad, voltaje y peso
-                            afectan directamente a la autonomía.</p>
-                    </article>
-                    <article class="hud-card">
-                        <span class="status status--warning">04 / CONTROL</span>
-                        <h3>Controladora de vuelo</h3>
-                        <p>Es el cerebro del sistema de vuelo. Procesa los datos de los sensores y ajusta los motores
-                            para mantener la aeronave estable.</p>
-                    </article>
-                    <article class="hud-card">
-                        <span class="status status--warning">05 / NAVEGACIÓN</span>
-                        <h3>GPS / GNSS</h3>
-                        <p>Permite obtener información de posición mediante sistemas de navegación por satélite y
-                            habilita funciones como el posicionamiento asistido.</p>
-                    </article>
-                    <article class="hud-card">
-                        <span class="status status--warning">06 / ESTABILIDAD</span>
-                        <h3>IMU y sensores</h3>
-                        <p>Los sensores proporcionan información sobre aceleración, velocidad angular y orientación para
-                            ayudar a controlar el vuelo.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section section--dark" id="sistemas">
-            <div class="container">
-                <div class="section__header">
-                    <p class="section__eyebrow">04 / SISTEMAS CLAVE</p>
-                    <h2 class="section__title">La tecnología que mantiene todo conectado.</h2>
-                    <p class="section__description">
-                        Más allá de los componentes físicos, un dron integra sistemas que permiten pilotarlo,
-                        estabilizarlo,
-                        navegar y, en muchos casos, capturar información desde el aire.
-                    </p>
-                </div>
-
-                <div class="grid grid--2">
-                    <article class="glass-card">
-                        <div class="icon-box" aria-hidden="true">01</div>
-                        <h3>Gimbal y cámara</h3>
-                        <p>
-                            El gimbal estabiliza la cámara frente a los movimientos de la aeronave. Es especialmente
-                            importante
-                            en fotografía y vídeo aéreo, donde una imagen estable es fundamental.
-                        </p>
-                    </article>
-                    <article class="glass-card">
-                        <div class="icon-box" aria-hidden="true">02</div>
-                        <h3>Enlace de control</h3>
-                        <p>
-                            Permite intercambiar información entre la aeronave y el sistema de control remoto. Su
-                            alcance y
-                            fiabilidad son factores importantes para la operación segura.
-                        </p>
-                    </article>
-                    <article class="glass-card">
-                        <div class="icon-box" aria-hidden="true">03</div>
-                        <h3>Sensores de proximidad</h3>
-                        <p>
-                            Algunos modelos incorporan sensores capaces de detectar obstáculos y ayudar al piloto o al
-                            sistema
-                            automático a mantener una distancia de seguridad.
-                        </p>
-                    </article>
-                    <article class="glass-card">
-                        <div class="icon-box" aria-hidden="true">04</div>
-                        <h3>Telemetría</h3>
-                        <p>
-                            Proporciona información de estado y vuelo, como batería, posición, altura o velocidad,
-                            ayudando a
-                            tomar decisiones durante la operación.
-                        </p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="como-funciona">
-            <div class="container">
-                <div class="section__header section__header--split">
-                    <div>
-                        <p class="section__eyebrow">05 / DEL PILOTO AL MOTOR</p>
-                        <h2 class="section__title">¿Cómo consigue volar?</h2>
+                        <p>Sostienen el conjunto. La fibra de carbono de alto módulo proporciona rigidez torsional sin añadir peso innecesario.</p>
                     </div>
-                    <p class="section__description">
-                        En un multirrotor, una orden del piloto se convierte en una cadena de decisiones electrónicas
-                        que termina
-                        modificando la velocidad de los motores.
-                    </p>
+
+                    <div class="card component-card">
+                        <div class="component-header">
+                            <span class="status status-cyan"><i class="fa-solid fa-gauge-high"></i> PROPULSIÓN</span>
+                        </div>
+                        <h3>Motores Brushless & ESC</h3>
+                        <p>Transforman la corriente trifásica en fuerza de empuje ajustando sus revoluciones miles de veces por segundo.</p>
+                    </div>
+
+                    <div class="card component-card">
+                        <div class="component-header">
+                            <span class="status status-green"><i class="fa-solid fa-battery-full"></i> ENERGÍA</span>
+                        </div>
+                        <h3>Baterías LiPo / Li-ion</h3>
+                        <p>Suministran altas tasas de descarga (C-Rating) necesarias para sostener la demanda pico de los motores.</p>
+                    </div>
+
+                    <div class="card component-card">
+                        <div class="component-header">
+                            <span class="status status-purple"><i class="fa-solid fa-brain"></i> PROCESAMIENTO</span>
+                        </div>
+                        <h3>Controladora de Vuelo</h3>
+                        <p>El cerebro electrónico. Ejecuta bucles de control PID ultra-rápidos para mantener la aeronave nivelada.</p>
+                    </div>
+
+                    <div class="card component-card">
+                        <div class="component-header">
+                            <span class="status status-orange"><i class="fa-solid fa-satellite"></i> NAVEGACIÓN</span>
+                        </div>
+                        <h3>GPS / GNSS / RTK</h3>
+                        <p>Obtiene la posición tridimensional mediante constelaciones satelitales con precisión centimétrica en módulos RTK.</p>
+                    </div>
+
+                    <div class="card component-card">
+                        <div class="component-header">
+                            <span class="status status-pink"><i class="fa-solid fa-compass"></i> SENSORES IMU</span>
+                        </div>
+                        <h3>Giroscopio y Barómetro</h3>
+                        <p>Miden aceleraciones angulares, inclinación y cambios métricos en la presión atmosférica para calcular la altura exacta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 04: FLUJO OPERATIVO -->
+        <section class="section section-dark" id="como-funciona">
+            <div class="container">
+                <div class="section-header">
+                    <p class="eyebrow">04 / FLUJO OPERATIVO</p>
+                    <h2>Del mando al aire en milisegundos.</h2>
+                    <p class="section-lead">Cadena de decisiones automáticas que ocurre cada vez que mueves un stick.</p>
                 </div>
 
                 <div class="timeline">
-                    <article class="timeline__item is-active">
-                        <span class="timeline__index">01</span>
-                        <div>
-                            <span class="status status--active">ENTRADA</span>
-                            <h3>El piloto envía una orden</h3>
-                            <p>El piloto utiliza la emisora o el sistema de control para solicitar una acción: ascender,
-                                girar, avanzar o desplazarse lateralmente.</p>
+                    <div class="timeline-item">
+                        <div class="timeline-badge">01</div>
+                        <div class="timeline-content">
+                            <span class="tech-tag">Paso 01 — Emisión</span>
+                            <h3>El piloto da una orden</h3>
+                            <p>El stick de la emisora transmite una señal de radio en la banda de 2.4 GHz o 5.8 GHz con las intenciones de movimiento.</p>
                         </div>
-                    </article>
-                    <article class="timeline__item">
-                        <span class="timeline__index">02</span>
-                        <div>
-                            <span class="status">PROCESAMIENTO</span>
-                            <h3>La controladora interpreta la orden</h3>
-                            <p>La controladora de vuelo combina la orden recibida con la información de los sensores y
-                                calcula cómo debe actuar la aeronave.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-badge">02</div>
+                        <div class="timeline-content">
+                            <span class="tech-tag">Paso 02 — Cálculo</span>
+                            <h3>La controladora procesa los datos</h3>
+                            <p>Compara la orden del piloto con la actitud actual medida por los giroscopios y calcula la corrección de potencia.</p>
                         </div>
-                    </article>
-                    <article class="timeline__item">
-                        <span class="timeline__index">03</span>
-                        <div>
-                            <span class="status">ACTUACIÓN</span>
-                            <h3>Los motores cambian su respuesta</h3>
-                            <p>Los controladores electrónicos de velocidad regulan la potencia de los motores y
-                                modifican el empuje de cada hélice.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-badge">03</div>
+                        <div class="timeline-content">
+                            <span class="tech-tag">Paso 03 — Ajuste</span>
+                            <h3>Los variadores (ESC) actúan</h3>
+                            <p>Envían pulsos de corriente a cada motor brushless individual, cambiando instantáneamente la velocidad de rotación de las hélices.</p>
                         </div>
-                    </article>
-                    <article class="timeline__item">
-                        <span class="timeline__index">04</span>
-                        <div>
-                            <span class="status">FEEDBACK</span>
-                            <h3>Los sensores comprueban el resultado</h3>
-                            <p>La aeronave mide continuamente su movimiento y orientación. El sistema corrige las
-                                diferencias para mantener el comportamiento esperado.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-badge">04</div>
+                        <div class="timeline-content">
+                            <span class="tech-tag">Paso 04 — Feedback</span>
+                            <h3>Bucle de retroalimentación</h3>
+                            <p>Los sensores leen el nuevo estado de la aeronave en tiempo real y reajustan el empuje continuamente frente a rachas de viento.</p>
                         </div>
-                    </article>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="section section--dark" id="siguiente-paso">
+        <!-- SECCIÓN 05: SIGUIENTE PASO -->
+        <section class="section" id="siguiente-paso">
             <div class="container">
-                <div class="section__header">
-                    <p class="section__eyebrow">06 / SIGUIENTE PASO</p>
-                    <h2 class="section__title">Ya conoces la máquina. Ahora conoce las reglas.</h2>
-                    <p class="section__description">
-                        Saber cómo funciona un dron es solo el principio. Antes de realizar una operación real debes
-                        conocer
-                        la normativa aplicable y comprobar dónde puedes volar.
-                    </p>
-                </div>
-
-                <div class="grid grid--2">
-                    <a class="tech-card" href="normativa.html">
-                        <span class="tech-card__number">01 / NORMATIVA</span>
-                        <h3>Aprende las reglas de vuelo</h3>
-                        <p>Descubre las categorías de operación y los principales requisitos que debes conocer antes de
-                            volar.</p>
-                        <span class="card-link">Ir a normativa <span aria-hidden="true">↗</span></span>
-                    </a>
-                    <a class="tech-card" href="mapas.html">
-                        <span class="tech-card__number">02 / ESPACIO AÉREO</span>
-                        <h3>Comprueba dónde puedes volar</h3>
-                        <p>Aprende a consultar el espacio aéreo y las zonas geográficas antes de planificar una
-                            operación.</p>
-                        <span class="card-link">Ir a mapas <span aria-hidden="true">↗</span></span>
-                    </a>
+                <div class="cta-banner">
+                    <div class="cta-banner-content">
+                        <p class="eyebrow">05 / CONTINÚA TU FORMACIÓN</p>
+                        <h2>Conoces la tecnología. Domina la operación.</h2>
+                        <p>No despegues sin conocer las reglas del juego ni las zonas geográficas permitidas.</p>
+                    </div>
+                    <div class="cta-banner-actions">
+                        <a href="normativa.html" class="btn-apple-primary"><i class="fa-solid fa-scale-balanced"></i> Ver Normativa EASA</a>
+                        <a href="mapas.html" class="btn-apple-link">Consultar Mapas ↗</a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container site-footer__inner">
-            <div>
-                <a class="site-logo" href="index.html" aria-label="DroneCore, volver al inicio">
-                    <span class="site-logo__mark" aria-hidden="true">DC</span>
-                    <span class="site-logo__text">DRONE<span>CORE</span></span>
-                </a>
-                <p>Conocimiento para volar con criterio.</p>
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="logo-mark">DC</span> DRONE<span>CORE</span>
+                <p>Conocimiento y precisión para volar con criterio.</p>
             </div>
-            <p class="site-footer__meta">DRONECORE / EDUCACIÓN UAV / 2026</p>
+            <div class="footer-meta">
+                <p>DRONECORE UAV / © 2026</p>
+            </div>
         </div>
     </footer>
-    <button class="back-to-top" aria-label="Volver arriba"><i class="fa-solid fa-arrow-up"></i></button>
 
-    <script src="js/main.js" defer></script>
 </body>
-
 </html>

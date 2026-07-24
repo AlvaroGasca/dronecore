@@ -1,132 +1,48 @@
-'use strict';
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. Selector de Tema (Oscuro / Claro)
+    const themeBtn = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    
+    const moonIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+    const sunIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
 
-const navToggle = document.querySelector('.nav-toggle');
-const mobileNav = document.querySelector('.mobile-nav');
-const allNavLinks = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('main section[id]');
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    themeBtn.innerHTML = currentTheme === 'dark' ? sunIcon : moonIcon;
 
-/**
- * Control del menú móvil.
- */
-function setMobileMenu(isOpen) {
-    if (!navToggle || !mobileNav) {
-        return;
-    }
-
-    navToggle.classList.toggle('is-open', isOpen);
-    mobileNav.classList.toggle('is-open', isOpen);
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-    navToggle.setAttribute(
-        'aria-label',
-        isOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'
-    );
-    mobileNav.setAttribute('aria-hidden', String(!isOpen));
-}
-
-if (navToggle && mobileNav) {
-    navToggle.addEventListener('click', () => {
-        const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-        setMobileMenu(!isOpen);
+    themeBtn.addEventListener('click', () => {
+        let theme = htmlElement.getAttribute('data-theme');
+        let newTheme = theme === 'dark' ? 'light' : 'dark';
+        
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeBtn.innerHTML = newTheme === 'dark' ? sunIcon : moonIcon;
     });
-}
 
-/**
- * Cierra el menú móvil cuando se selecciona una opción.
- */
-allNavLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-        if (mobileNav?.classList.contains('is-open')) {
-            setMobileMenu(false);
-        }
-    });
-});
+    // 2. Observer para animaciones al hacer scroll (.fade-up y puntos de la timeline)
+    function initObserver() {
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -40px 0px"
+        };
 
-/**
- * Permite cerrar el menú móvil pulsando Escape.
- */
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && mobileNav?.classList.contains('is-open')) {
-        setMobileMenu(false);
-        navToggle?.focus();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Activa el punto luminoso de la timeline al llegar con el scroll
+                    if (entry.target.classList.contains('timeline-item')) {
+                        const dot = entry.target.querySelector('.timeline-dot');
+                        if (dot) dot.classList.add('active');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up, .timeline-item').forEach(el => observer.observe(el));
     }
+    
+    initObserver();
 });
-
-/**
- * Cierra el menú móvil si el viewport vuelve a escritorio.
- */
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 980 && mobileNav?.classList.contains('is-open')) {
-        setMobileMenu(false);
-    }
-});
-
-/**
- * Actualiza el enlace activo de navegación según la sección visible.
- * IntersectionObserver evita escuchar continuamente el evento scroll.
- */
-function updateActiveNavigation(sectionId) {
-    allNavLinks.forEach((link) => {
-        const isActive = link.getAttribute('href') === `#${sectionId}`;
-        link.classList.toggle('is-active', isActive);
-    });
-}
-
-if ('IntersectionObserver' in window && sections.length > 0) {
-    const sectionObserver = new IntersectionObserver(
-        (entries) => {
-            const visibleEntries = entries
-                .filter((entry) => entry.isIntersecting)
-                .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-            if (visibleEntries.length > 0) {
-                updateActiveNavigation(visibleEntries[0].target.id);
-            }
-        },
-        {
-            rootMargin: '-25% 0px -60% 0px',
-            threshold: [0, 0.1, 0.25, 0.5, 1]
-        }
-    );
-
-    sections.forEach((section) => sectionObserver.observe(section));
-} else {
-    /**
-     * Fallback para navegadores sin IntersectionObserver.
-     */
-    const updateActiveSectionOnScroll = () => {
-        const scrollPosition = window.scrollY + window.innerHeight * 0.3;
-        let currentSectionId = sections[0]?.id;
-
-        sections.forEach((section) => {
-            if (section.offsetTop <= scrollPosition) {
-                currentSectionId = section.id;
-            }
-        });
-
-        if (currentSectionId) {
-            updateActiveNavigation(currentSectionId);
-        }
-    };
-
-    window.addEventListener('scroll', updateActiveSectionOnScroll, { passive: true });
-    updateActiveSectionOnScroll();
-}
-
-/**
- * Soporte para navegación con teclado mediante foco visible.
- */
-document.addEventListener('keyup', (event) => {
-    if (event.key === 'Tab') {
-        document.body.classList.add('keyboard-navigation');
-    }
-});
-
-document.addEventListener('mousedown', () => {
-    document.body.classList.remove('keyboard-navigation');
-});
-
-/**
- * Inicialización.
- */
-document.documentElement.classList.add('js-enabled');
-setMobileMenu(false);
