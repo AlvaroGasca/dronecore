@@ -34,6 +34,22 @@ const topButton = document.querySelector('.back-to-top');
 window.addEventListener('scroll', () => topButton?.classList.toggle('is-visible', window.scrollY > 500), { passive: true });
 topButton?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+/* Vídeo del hero: reproducción automática y reinicio al finalizar. */
+const heroVideo = document.querySelector('.hero__video');
+
+if (heroVideo) {
+  heroVideo.addEventListener('ended', () => {
+    heroVideo.currentTime = 0;
+    heroVideo.play().catch(() => {});
+  });
+
+  const playHeroVideo = () => {
+    if (heroVideo.paused) heroVideo.play().catch(() => {});
+  };
+
+  heroVideo.addEventListener('canplay', playHeroVideo, { once: true });
+}
+
 document.querySelectorAll('[data-auto-index]').forEach((index) => {
   document.querySelectorAll('.content-section[id] h2').forEach((heading) => {
     const section = heading.closest('.content-section');
