@@ -1,214 +1,295 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description"
-    content="Guía práctica de normativa de drones en España: categorías, registro, seguro, límites y planificación.">
-  <meta property="og:title" content="Normativa de drones en España | DroneCore">
-  <meta property="og:description" content="Las reglas esenciales para planificar un vuelo responsable.">
-  <title>Normativa de drones en España | DroneCore</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self' https: data: blob:; 
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://ajax.googleapis.com https://cdnjs.cloudflare.com; 
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; 
+        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; 
+        img-src 'self' data: https:; 
+        media-src 'self' https:; 
+        connect-src 'self' https: blob:;
+    ">
+
+    <meta name="description" content="Guía práctica de normativa de drones en España: categorías, registro, seguro, límites y planificación.">
+    <meta property="og:title" content="Normativa de drones en España | DroneCore">
+    <meta property="og:description" content="Las reglas esenciales para planificar un vuelo responsable.">
+    <title>Normativa de drones en España | DroneCore</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normativa.css">
 </head>
 
-<body>
-  <header class="site-header">
-    <div class="container site-header__inner"><a class="site-logo" href="index.html"
-        aria-label="DroneCore, inicio"><span class="site-logo__mark">DC</span><span
-          class="site-logo__text">DRONE<span>CORE</span></span></a>
-      <nav class="site-nav" aria-label="Navegación"><a class="nav-link" href="index.html">Inicio</a><a class="nav-link"
-          href="drones.html">Drones</a><a class="nav-link is-active" href="normativa.html"
-          aria-current="page">Normativa</a><a class="nav-link" href="titulaciones.html">Titulaciones</a><a
-          class="nav-link" href="mapas.html">Mapas</a><a class="nav-link" href="recursos.html">Recursos</a><a
-          class="nav-link" href="faq.html">FAQ</a></nav>
-      <div class="header-actions"><button class="theme-toggle" type="button" aria-label="Cambiar tema"><i
-            class="fa-solid fa-moon"></i></button><button class="nav-toggle" type="button" aria-label="Abrir menú"
-          aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button></div>
-    </div>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Navegación móvil"><a class="nav-link"
-        href="index.html">Inicio</a><a class="nav-link" href="drones.html">Drones</a><a class="nav-link is-active"
-        href="normativa.html">Normativa</a><a class="nav-link" href="titulaciones.html">Titulaciones</a><a
-        class="nav-link" href="mapas.html">Mapas</a><a class="nav-link" href="recursos.html">Recursos</a><a
-        class="nav-link" href="faq.html">FAQ</a></nav>
-  </header>
-  <main>
-    <section class="page-hero">
-      <div class="container">
-        <p class="section__eyebrow">02 / VUELA CON CRITERIO</p>
-        <h1>Las reglas también forman parte del vuelo.</h1>
-        <p>La normativa europea no distingue entre ocio y trabajo: clasifica el riesgo de la operación. Esta guía
-          traduce lo esencial a decisiones prácticas, sin sustituir la comprobación oficial.</p>
-        <div class="hero__actions"><a class="btn btn--primary" href="#primer-vuelo">Preparar mi primer vuelo
-            <span>↓</span></a><a class="btn btn--secondary" target="_blank" rel="noopener"
-            href="https://drones.enaire.es/">Consultar ENAIRE Drones ↗</a></div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container page-layout">
-        <article class="content">
-          <section class="content-section" id="primer-vuelo">
-            <p class="section__eyebrow">ANTES DE EMPEZAR</p>
-            <h2>Piensa en la operación, no solo en el dron.</h2>
-            <p>Para saber qué necesitas, responde estas cuatro preguntas. El peso y la clase de tu dron son importantes,
-              pero el lugar, las personas cercanas y la forma de vuelo también cambian las reglas.</p>
-            <div class="grid grid--2">
-              <article class="resource-card"><i class="fa-solid fa-helicopter" aria-hidden="true"></i>
-                <h3>¿Qué aeronave uso?</h3>
-                <p>Revisa su masa máxima al despegue, etiqueta de clase C0–C6 y si incorpora cámara.</p>
-              </article>
-              <article class="resource-card"><i class="fa-solid fa-people-group"></i>
-                <h3>¿Quién hay cerca?</h3>
-                <p>La cercanía a personas no participantes y las concentraciones condicionan la subcategoría.</p>
-              </article>
-              <article class="resource-card"><i class="fa-solid fa-map-location-dot"></i>
-                <h3>¿Dónde vuelo?</h3>
-                <p>Consulta siempre zonas geográficas UAS, aeródromos, espacios protegidos y restricciones locales.</p>
-              </article>
-              <article class="resource-card"><i class="fa-solid fa-route"></i>
-                <h3>¿Cómo voy a volar?</h3>
-                <p>Altura, distancia, visibilidad, vuelo nocturno y tipo de misión determinan el nivel de riesgo.</p>
-              </article>
+<body class="page-normativa">
+
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo" aria-label="Ir al inicio">
+                <span class="logo-mark">DC</span> DRONECORE
+            </a>
+            <nav class="nav-links">
+                <a href="drones.html">DRONES</a>
+                <a href="normativa.html" class="active">NORMATIVA</a>
+                <a href="titulaciones.html">TITULACIONES</a>
+                <a href="mapas.html">MAPAS</a>
+                <a href="recursos.html">RECURSOS</a>
+                <a href="faq.html">FAQ</a>
+            </nav>
+            <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema"></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO CINEMATOGRÁFICO -->
+        <section id="inicio" class="hero-cinematic">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="img/drone-city-2.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+
+            <div class="container hero-content-clean fade-up">
+                <span class="tech-badge"><i class="fa-solid fa-scale-balanced"></i> 02 / VUELA CON CRITERIO</span>
+                <h1>Las reglas también forman parte del <span class="text-gradient">vuelo</span>.</h1>
+                <p class="hero-subtitle">Guía práctica para planificar vuelos responsables y entender el marco regulatorio europeo de forma sencilla y directa.</p>
+                <div class="hero-cta-group">
+                    <a href="#primer-vuelo" class="btn-apple-primary">Preparar mi primer vuelo</a>
+                    <a href="https://drones.enaire.es/" target="_blank" rel="noopener" class="btn-apple-link">Consultar ENAIRE Drones <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8em; margin-left: 4px;"></i></a>
+                </div>
             </div>
-            <div class="info-box"><strong>Regla de oro:</strong> si no encaja por completo en categoría abierta, no
-              improvises. Puede tratarse de categoría específica y requerir una declaración o autorización.</div>
-          </section>
-          <section class="content-section" id="categorias">
-            <p class="section__eyebrow">MAPA GENERAL</p>
-            <h2>Tres categorías para tres niveles de riesgo</h2>
-            <div class="grid grid--3">
-              <article class="resource-card"><i class="fa-solid fa-leaf"></i>
-                <h3>Abierta</h3>
-                <p>Operaciones de bajo riesgo, sin autorización previa si cumples todos los límites. Es la categoría
-                  habitual para empezar.</p>
-              </article>
-              <article class="resource-card"><i class="fa-solid fa-compass"></i>
-                <h3>Específica</h3>
-                <p>Para operaciones que superan alguno de los límites de la abierta. Requiere declaración, autorización
-                  o LUC.</p>
-              </article>
-              <article class="resource-card"><i class="fa-solid fa-shield-halved"></i>
-                <h3>Certificada</h3>
-                <p>Para operaciones de alto riesgo: transporte de personas, ciertas mercancías peligrosas o riesgos
-                  comparables a aviación tripulada.</p>
-              </article>
+
+            <a href="#primer-vuelo" class="scroll-indicator" aria-label="Bajar a la siguiente sección">
+                <i class="fa-solid fa-chevron-down"></i>
+            </a>
+        </section>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <div class="section section-light">
+            <div class="container">
+                
+                <!-- SECCIÓN: ANTES DE EMPEZAR -->
+                <section class="content-section fade-up" id="primer-vuelo">
+                    <p class="eyebrow">ANTES DE EMPEZAR</p>
+                    <h2>Piensa en la operación, no solo en el dron.</h2>
+                    <p>Para saber qué necesitas, responde estas cuatro preguntas. El peso y la clase de tu dron son importantes, pero el lugar, las personas cercanas y la forma de vuelo también cambian las reglas.</p>
+                    
+                    <div class="bento-grid" style="margin-top: 32px;">
+                        <div class="bento-box">
+                            <div class="bento-header">
+                                <span class="bento-tag"><i class="fa-solid fa-helicopter"></i> AERONAVE</span>
+                            </div>
+                            <h3>¿Qué aeronave uso?</h3>
+                            <p class="bento-full">Revisa su masa máxima al despegue, etiqueta de clase C0–C6 y si incorpora cámara.</p>
+                        </div>
+
+                        <div class="bento-box">
+                            <div class="bento-header">
+                                <span class="bento-tag"><i class="fa-solid fa-people-group"></i> ENTORNO SOCIAL</span>
+                            </div>
+                            <h3>¿Quién hay cerca?</h3>
+                            <p class="bento-full">La cercanía a personas no participantes y las concentraciones condicionan la subcategoría.</p>
+                        </div>
+
+                        <div class="bento-box">
+                            <div class="bento-header">
+                                <span class="bento-tag"><i class="fa-solid fa-map-location-dot"></i> UBICACIÓN</span>
+                            </div>
+                            <h3>¿Dónde vuelo?</h3>
+                            <p class="bento-full">Consulta siempre zonas geográficas UAS, aeródromos, espacios protegidos y restricciones locales.</p>
+                        </div>
+
+                        <div class="bento-box">
+                            <div class="bento-header">
+                                <span class="bento-tag"><i class="fa-solid fa-route"></i> TRAYECTORIA</span>
+                            </div>
+                            <h3>¿Cómo voy a volar?</h3>
+                            <p class="bento-full">Altura, distancia, visibilidad, vuelo nocturno y tipo de misión determinan el nivel de riesgo.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-box info-box--gold fade-up">
+                        <strong>Regla de oro:</strong> si no encaja por completo en categoría abierta, no improvises. Puede tratarse de categoría específica y requerir una declaración o autorización.
+                    </div>
+                </section>
+
+                <!-- SECCIÓN: CATEGORÍAS -->
+                <section class="content-section fade-up" id="categorias">
+                    <p class="eyebrow">MAPA GENERAL</p>
+                    <h2>Tres categorías para tres niveles de riesgo</h2>
+                    
+                    <div class="cards-grid" style="margin-top: 32px;">
+                        <div class="card card-media">
+                            <div class="card-media-body" style="padding-top: 40px; padding-bottom: 40px;">
+                                <i class="fa-solid fa-leaf" style="font-size: 2rem; color: var(--status-blue); margin-bottom: 16px;"></i>
+                                <h3>Abierta</h3>
+                                <p>Operaciones de bajo riesgo, sin autorización previa si cumples todos los límites. Es la categoría habitual para empezar.</p>
+                            </div>
+                        </div>
+
+                        <div class="card card-media">
+                            <div class="card-media-body" style="padding-top: 40px; padding-bottom: 40px;">
+                                <i class="fa-solid fa-compass" style="font-size: 2rem; color: var(--status-orange); margin-bottom: 16px;"></i>
+                                <h3>Específica</h3>
+                                <p>Para operaciones que superan alguno de los límites de la abierta. Requiere declaración, autorización o LUC.</p>
+                            </div>
+                        </div>
+
+                        <div class="card card-media">
+                            <div class="card-media-body" style="padding-top: 40px; padding-bottom: 40px;">
+                                <i class="fa-solid fa-shield-halved" style="font-size: 2rem; color: var(--status-red); margin-bottom: 16px;"></i>
+                                <h3>Certificada</h3>
+                                <p>Para operaciones de alto riesgo: transporte de personas, ciertas mercancías peligrosas o riesgos comparables a aviación tripulada.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN: CATEGORÍA ABIERTA -->
+                <section class="content-section fade-up" id="abierta">
+                    <p class="eyebrow">CATEGORÍA ABIERTA</p>
+                    <h2>La opción más común, con límites claros</h2>
+                    <p>En categoría abierta el vuelo es de bajo riesgo y no exige autorización ni declaración antes de despegar, siempre que se respeten todas sus condiciones. Se divide en A1, A2 y A3.</p>
+                    
+                    <div class="bento-grid" style="margin-top: 32px;">
+                        <div class="bento-box">
+                            <div class="bento-header">
+                                <span class="bento-tag">SUBCATEGORÍA A1</span>
+                            </div>
+                            <h3>Cerca, pero sin sobrevolar</h3>
+                            <p class="bento-full">Para aeronaves muy ligeras o de clases C0/C1. Evita sobrevolar a personas no participantes y nunca vueles sobre concentraciones de personas.</p>
+                        </div>
+
+                        <div class="bento-box">
+                            <div class="bento-header">
+                                <span class="bento-tag">SUBCATEGORÍA A2</span>
+                            </div>
+                            <h3>Distancia controlada</h3>
+                            <p class="bento-full">Habitualmente asociada a aeronaves C2. Permite operaciones más próximas a personas, aplicando las distancias y la formación A2 exigibles.</p>
+                        </div>
+
+                        <div class="bento-box">
+                            <div class="bento-header">
+                                <span class="bento-tag">SUBCATEGORÍA A3</span>
+                            </div>
+                            <h3>Lejos de personas</h3>
+                            <p class="bento-full">Para volar en un área despejada: sin poner en riesgo a personas no participantes y a un mínimo de 150 m de zonas residenciales, comerciales, industriales o recreativas.</p>
+                        </div>
+                    </div>
+
+                    <h3>Límites que conviene memorizar</h3>
+                    <div class="checklist-container">
+                        <ul class="checklist">
+                            <li>Mantén siempre el dron dentro de tu alcance visual directo (VLOS), salvo un marco operativo que permita otra cosa.</li>
+                            <li>No superes 120 m sobre el punto más cercano de la superficie; el terreno también cuenta.</li>
+                            <li>No sobrevueles concentraciones de personas.</li>
+                            <li>Consulta la zona geográfica UAS antes de cada vuelo: el límite general no elimina las restricciones locales o aeronáuticas.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN: REGISTRO -->
+                <section class="content-section fade-up" id="registro">
+                    <p class="eyebrow">OPERADOR, PILOTO Y SEGURO</p>
+                    <h2>Lo que debes llevar resuelto antes de volar</h2>
+                    <p>El <strong>operador</strong> es la persona o entidad responsable de la operación; el <strong>piloto a distancia</strong> es quien maneja la aeronave. Pueden ser la misma persona, pero no siempre lo son. Si vuelas para una organización, normalmente el registro corresponde al operador responsable.</p>
+                    
+                    <div class="bento-grid" style="margin-top: 32px;">
+                        <div class="bento-box">
+                            <div class="bento-header">
+                                <span class="bento-tag"><i class="fa-solid fa-id-card"></i> IDENTIFICACIÓN</span>
+                            </div>
+                            <h3>Registro de operador</h3>
+                            <p class="bento-full">En España es necesario, entre otros casos, para UAS de 250 g o más y para UAS con sensor capaz de captar datos personales —como una cámara— salvo excepciones de juguetes. El número debe figurar en las aeronaves aplicables.</p>
+                            <a class="btn-apple-link" style="margin-top: 16px;" target="_blank" rel="noopener" href="https://sede.seguridadaerea.gob.es/sede-aesa/catalogo-de-procedimientos/registro-de-operadores-de-uas">Ir al registro AESA <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8em;"></i></a>
+                        </div>
+
+                        <div class="bento-box">
+                            <div class="bento-header">
+                                <span class="bento-tag"><i class="fa-solid fa-file-shield"></i> PÓLIZA</span>
+                            </div>
+                            <h3>Seguro de responsabilidad civil</h3>
+                            <p class="bento-full"><strong>No es obligatorio en todos los vuelos.</strong> Están exentas las operaciones en categoría abierta A1 y las de A3 con UAS de MTOM inferior a 20 kg. Sí se exige, entre otros supuestos, en A2, categoría específica y cuando el UAS tiene una MTOM igual o superior a 20 kg.</p>
+                            <p class="bento-full" style="margin-top: 12px; font-size: 0.85rem;">Si te corresponde, debe cubrir la responsabilidad civil frente a daños a terceros en cada vuelo. Comprueba la actividad y los límites de la póliza; no tiene por qué ser una póliza permanente.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN: ENTORNO -->
+                <section class="content-section fade-up" id="entorno">
+                    <p class="eyebrow">ESPACIO, PERSONAS Y PRIVACIDAD</p>
+                    <h2>Un vuelo permitido no siempre es un vuelo apropiado.</h2>
+                    <p>La app ENAIRE Drones ayuda a detectar zonas geográficas UAS y sus condiciones. Aun así, planificar también significa comprobar meteorología, obstáculos, despegue y aterrizaje, permisos del titular del terreno y la presencia de terceros.</p>
+                    
+                    <div class="info-box info-box--warning fade-up">
+                        <strong>Imagen y privacidad:</strong> una cámara no da derecho a grabar o publicar libremente. Reduce la captación de personas, evita lugares sensibles y atiende a las normas de protección de datos y de propiedad.
+                    </div>
+                    
+                    <ul>
+                        <li>Conserva margen de seguridad ante personas, edificios, carreteras y fauna.</li>
+                        <li>Si cambian las condiciones —viento, público, emergencia o aeronaves tripuladas— aterriza y reevalúa.</li>
+                        <li>Para volar de noche, revisa los requisitos aplicables; en categoría abierta se exige, entre otras condiciones, luz verde intermitente en la aeronave.</li>
+                    </ul>
+                </section>
+
+                <!-- SECCIÓN: ESPECÍFICA -->
+                <section class="content-section fade-up" id="especifica">
+                    <p class="eyebrow">CUANDO ABIERTA NO ENCAJA</p>
+                    <h2>Categoría específica: más planificación, no más improvisación.</h2>
+                    <p>En esta categoría entran operaciones de riesgo medio que no cumplen todos los límites de la abierta. Si tu operación se ajusta a un escenario estándar, el operador puede presentar una declaración operacional; en otros casos necesitará una autorización basada en una evaluación de riesgo. Un LUC permite determinadas facultades a operadores cualificados.</p>
+                    
+                    <div class="info-box fade-up">
+                        <strong>Ejemplos orientativos:</strong> ciertas operaciones en entorno poblado, vuelos más allá de la vista o misiones que no encajan en A1, A2 o A3. El encaje exacto depende de la operación completa, no de una sola característica.
+                    </div>
+                </section>
+
+                <!-- SECCIÓN: CHECKLIST -->
+                <section class="content-section fade-up" id="salida">
+                    <p class="eyebrow">CHECKLIST FINAL</p>
+                    <h2>Antes de armar motores</h2>
+                    
+                    <div class="checklist-container">
+                        <ul class="checklist">
+                            <li>He identificado categoría, clase de UAS y formación necesaria.</li>
+                            <li>El operador está registrado y el seguro cubre este vuelo.</li>
+                            <li>He revisado ENAIRE Drones y las condiciones de la zona.</li>
+                            <li>El dron, baterías, retorno al punto de origen y área de aterrizaje están comprobados.</li>
+                            <li>Tengo un plan sencillo para abortar el vuelo si algo cambia.</li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-top: 40px; text-align: center;">
+                        <a class="btn-apple-primary" target="_blank" rel="noopener" href="https://www.seguridadaerea.gob.es/es/ambitos/drones">Consultar normativa y guías AESA <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8em; margin-left: 6px;"></i></a>
+                    </div>
+                </section>
+
             </div>
-          </section>
-          <section class="content-section" id="abierta">
-            <p class="section__eyebrow">CATEGORÍA ABIERTA</p>
-            <h2>La opción más común, con límites claros</h2>
-            <p>En categoría abierta el vuelo es de bajo riesgo y no exige autorización ni declaración antes de despegar,
-              siempre que se respeten todas sus condiciones. Se divide en A1, A2 y A3.</p>
-            <div class="grid grid--3" style="margin-top:2rem">
-              <article class="resource-card">
-                <h3>A1 · cerca, pero sin sobrevolar</h3>
-                <p>Para aeronaves muy ligeras o de clases C0/C1. Evita sobrevolar a personas no participantes y nunca
-                  vueles sobre concentraciones de personas.</p>
-              </article>
-              <article class="resource-card">
-                <h3>A2 · distancia controlada</h3>
-                <p>Habitualmente asociada a aeronaves C2. Permite operaciones más próximas a personas, aplicando las
-                  distancias y la formación A2 exigibles.</p>
-              </article>
-              <article class="resource-card">
-                <h3>A3 · lejos de personas</h3>
-                <p>Para volar en un área despejada: sin poner en riesgo a personas no participantes y a un mínimo de 150
-                  m de zonas residenciales, comerciales, industriales o recreativas.</p>
-              </article>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="logo-mark">DC</span> DRONE<span>CORE</span>
+                <p>Guía divulgativa. Confirma siempre la información oficial vigente.</p>
             </div>
-            <h3 style="margin-top:2.4rem">Límites que conviene memorizar</h3>
-            <ul class="checklist">
-              <li>Mantén siempre el dron dentro de tu alcance visual directo (VLOS), salvo un marco operativo que
-                permita otra cosa.</li>
-              <li>No superes 120 m sobre el punto más cercano de la superficie; el terreno también cuenta.</li>
-              <li>No sobrevueles concentraciones de personas.</li>
-              <li>Consulta la zona geográfica UAS antes de cada vuelo: el límite general no elimina las restricciones
-                locales o aeronáuticas.</li>
-            </ul>
-          </section>
-          <section class="content-section" id="registro">
-            <p class="section__eyebrow">OPERADOR, PILOTO Y SEGURO</p>
-            <h2>Lo que debes llevar resuelto antes de volar</h2>
-            <p>El <strong>operador</strong> es la persona o entidad responsable de la operación; el <strong>piloto a
-                distancia</strong> es quien maneja la aeronave. Pueden ser la misma persona, pero no siempre lo son. Si
-              vuelas para una organización, normalmente el registro corresponde al operador responsable.</p>
-            <div class="grid grid--2">
-              <article class="resource-card"><i class="fa-solid fa-id-card"></i>
-                <h3>Registro de operador</h3>
-                <p>En España es necesario, entre otros casos, para UAS de 250 g o más y para UAS con sensor capaz de
-                  captar datos personales —como una cámara— salvo excepciones de juguetes. El número debe figurar en las
-                  aeronaves aplicables.</p><a class="card-link" target="_blank" rel="noopener"
-                  href="https://sede.seguridadaerea.gob.es/sede-aesa/catalogo-de-procedimientos/registro-de-operadores-de-uas">Ir
-                  al registro AESA ↗</a>
-              </article>
-              <article class="resource-card"><i class="fa-solid fa-file-shield"></i>
-                <h3>Seguro de responsabilidad civil</h3>
-                <p><strong>No es obligatorio en todos los vuelos.</strong> Están exentas las operaciones en categoría
-                  abierta A1 y las de A3 con UAS de MTOM inferior a 20 kg. Sí se exige, entre otros supuestos, en A2,
-                  categoría específica y cuando el UAS tiene una MTOM igual o superior a 20 kg.</p>
-                <p>Si te corresponde, debe cubrir la responsabilidad civil frente a daños a terceros en cada vuelo.
-                  Comprueba la actividad y los límites de la póliza; no tiene por qué ser una póliza permanente.</p>
-              </article>
+            <div class="footer-meta">
+                <p>© 2026 DRONECORE</p>
             </div>
-          </section>
-          <section class="content-section" id="entorno">
-            <p class="section__eyebrow">ESPACIO, PERSONAS Y PRIVACIDAD</p>
-            <h2>Un vuelo permitido no siempre es un vuelo apropiado.</h2>
-            <p>La app ENAIRE Drones ayuda a detectar zonas geográficas UAS y sus condiciones. Aun así, planificar
-              también significa comprobar meteorología, obstáculos, despegue y aterrizaje, permisos del titular del
-              terreno y la presencia de terceros.</p>
-            <div class="info-box info-box--warning"><strong>Imagen y privacidad:</strong> una cámara no da derecho a
-              grabar o publicar libremente. Reduce la captación de personas, evita lugares sensibles y atiende a las
-              normas de protección de datos y de propiedad.</div>
-            <ul>
-              <li>Conserva margen de seguridad ante personas, edificios, carreteras y fauna.</li>
-              <li>Si cambian las condiciones —viento, público, emergencia o aeronaves tripuladas— aterriza y reevalúa.
-              </li>
-              <li>Para volar de noche, revisa los requisitos aplicables; en categoría abierta se exige, entre otras
-                condiciones, luz verde intermitente en la aeronave.</li>
-            </ul>
-          </section>
-          <section class="content-section" id="especifica">
-            <p class="section__eyebrow">CUANDO ABIERTA NO ENCAJA</p>
-            <h2>Categoría específica: más planificación, no más improvisación.</h2>
-            <p>En esta categoría entran operaciones de riesgo medio que no cumplen todos los límites de la abierta. Si
-              tu operación se ajusta a un escenario estándar, el operador puede presentar una declaración operacional;
-              en otros casos necesitará una autorización basada en una evaluación de riesgo. Un LUC permite determinadas
-              facultades a operadores cualificados.</p>
-            <div class="info-box"><strong>Ejemplos orientativos:</strong> ciertas operaciones en entorno poblado, vuelos
-              más allá de la vista o misiones que no encajan en A1, A2 o A3. El encaje exacto depende de la operación
-              completa, no de una sola característica.</div>
-          </section>
-          <section class="content-section" id="salida">
-            <p class="section__eyebrow">CHECKLIST FINAL</p>
-            <h2>Antes de armar motores</h2>
-            <ul class="checklist">
-              <li>He identificado categoría, clase de UAS y formación necesaria.</li>
-              <li>El operador está registrado y el seguro cubre este vuelo.</li>
-              <li>He revisado ENAIRE Drones y las condiciones de la zona.</li>
-              <li>El dron, baterías, retorno al punto de origen y área de aterrizaje están comprobados.</li>
-              <li>Tengo un plan sencillo para abortar el vuelo si algo cambia.</li>
-            </ul>
-            <p style="margin-top:2rem"><a class="btn btn--secondary" target="_blank" rel="noopener"
-                href="https://www.seguridadaerea.gob.es/es/ambitos/drones">Consultar normativa y guías AESA ↗</a></p>
-          </section>
-        </article>
-        <aside class="page-index" data-auto-index><strong>EN ESTA GUÍA</strong></aside>
-      </div>
-    </section>
-  </main>
-  <footer class="site-footer">
-    <div class="container site-footer__inner">
-      <div><a class="site-logo" href="index.html"><span class="site-logo__mark">DC</span><span
-            class="site-logo__text">DRONE<span>CORE</span></span></a>
-        <p>Guía divulgativa. Confirma siempre la información oficial vigente.</p>
-      </div>
-      <p class="site-footer__meta">DRONECORE / 2026</p>
-    </div>
-  </footer><button class="back-to-top" aria-label="Volver arriba"><i class="fa-solid fa-arrow-up"></i></button>
-  <script src="js/main.js" defer></script>
+        </div>
+    </footer>
+
+    <!-- JS Global -->
+    <script src="js/app.js"></script>
 </body>
 
 </html>

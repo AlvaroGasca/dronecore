@@ -1,0 +1,179 @@
+/* ==========================================================================
+   NORMATIVA.CSS — Estilos específicos para contenido legal y checklists
+   ========================================================================== */
+
+/* --- 1. HERO ESPECÍFICO PARA NORMATIVA --- */
+/* Eliminado: Usamos .hero-cinematic globalmente para consistencia */
+
+
+/* --- 2. CAJAS DE INFORMACIÓN (INFO-BOX) --- */
+.info-box {
+    position: relative;
+    padding: 24px 32px 24px 72px;
+    background: var(--surface-color);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin: 32px 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.info-box::before {
+    content: '\f05a'; /* fa-info-circle */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 24px;
+    left: 28px;
+    font-size: 1.5rem;
+    color: var(--status-blue);
+}
+
+.info-box strong {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Variante de advertencia / precaución */
+.info-box--warning {
+    background: rgba(255, 159, 10, 0.05);
+    border-color: rgba(255, 159, 10, 0.2);
+}
+
+.info-box--warning::before {
+    content: '\f071'; /* fa-exclamation-triangle */
+    color: var(--status-orange);
+}
+
+/* Variante para la "Regla de oro" */
+.info-box--gold {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 215, 0, 0) 100%);
+    border-color: rgba(255, 215, 0, 0.25);
+}
+
+.info-box--gold::before {
+    content: '\f091'; /* fa-trophy */
+    color: #f5c518;
+}
+
+/* --- 3. CHECKLIST VISUAL --- */
+.checklist-container {
+    margin: 32px 0;
+}
+
+.checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.checklist li {
+    position: relative;
+    padding: 16px 20px 16px 52px;
+    background: var(--surface-color);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.4s ease;
+}
+
+.checklist li:hover {
+    transform: translateX(4px);
+    border-color: var(--text-secondary);
+}
+
+.checklist li::before {
+    content: '\f00c'; /* fa-check */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    color: var(--status-blue);
+    background: rgba(41, 151, 255, 0.15);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+/* --- 4. LISTAS NORMALES (BULLETS) --- */
+.content-section ul:not(.checklist) {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0;
+}
+
+.content-section ul:not(.checklist) li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.content-section ul:not(.checklist) li::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--text-primary);
+    opacity: 0.5;
+}
+
+/* --- 5. AJUSTES DE CONTENIDO --- */
+.content-section {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.content-section:last-child {
+    border-bottom: none;
+}
+
+.content-section h2 {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.content-section h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.content-section p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.content-section p strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
