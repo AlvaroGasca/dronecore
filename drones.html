@@ -79,7 +79,7 @@
         <!-- SECCIÓN 01: CONCEPTOS BÁSICOS (Limpio / Fondo claro editorial) -->
         <section class="section section-light" id="que-es">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header fade-up">
                     <p class="eyebrow">01 / CONCEPTOS CLAVE</p>
                     <h2>Terminología aeronáutica.</h2>
                     <p class="section-lead">
@@ -88,7 +88,7 @@
                 </div>
 
                 <div class="bento-grid">
-                    <div class="bento-box">
+                    <div class="bento-box fade-up">
                         <div class="bento-header">
                             <span class="bento-tag">AERONAVE</span>
                         </div>
@@ -96,7 +96,7 @@
                         <p class="bento-full"><strong>Unmanned Aerial Vehicle</strong>. La estructura física y mecánica que realiza el desplazamiento aéreo sin tripulación a bordo.</p>
                     </div>
 
-                    <div class="bento-box">
+                    <div class="bento-box fade-up">
                         <div class="bento-header">
                             <span class="bento-tag">SISTEMA</span>
                         </div>
@@ -104,7 +104,7 @@
                         <p class="bento-full"><strong>Unmanned Aircraft System</strong>. El ecosistema completo: aeronave, estación de tierra, enlaces de datos y software de mando.</p>
                     </div>
 
-                    <div class="bento-box">
+                    <div class="bento-box fade-up">
                         <div class="bento-header">
                             <span class="bento-tag">OPERACIÓN</span>
                         </div>
@@ -118,14 +118,14 @@
         <!-- SECCIÓN 02: TIPOS DE DRONES (Continuidad clara y limpia) -->
         <section class="section section-light-alt" id="tipos">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header fade-up">
                     <p class="eyebrow">02 / CONFIGURACIONES DE VUELO</p>
                     <h2>Plataformas adaptadas a cada misión.</h2>
                     <p class="section-lead">La arquitectura mecánica determina la maniobrabilidad, el rango de acción y la eficiencia energética.</p>
                 </div>
 
                 <div class="cards-grid">
-                    <div class="card card-media">
+                    <div class="card card-media fade-up">
                         <div class="card-image-wrapper">
                             <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=800&q=80" alt="Dron Multirrotor" class="card-img">
                             <span class="card-tag">Alta Maniobra</span>
@@ -136,7 +136,7 @@
                         </div>
                     </div>
 
-                    <div class="card card-media">
+                    <div class="card card-media fade-up">
                         <div class="card-image-wrapper">
                             <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80" alt="Dron Ala Fija" class="card-img">
                             <span class="card-tag">Gran Autonomía</span>
@@ -147,7 +147,7 @@
                         </div>
                     </div>
 
-                    <div class="card card-media">
+                    <div class="card card-media fade-up">
                         <div class="card-image-wrapper">
                             <img src="https://images.unsplash.com/photo-1507582020474-9a35b7d455d9?auto=format&fit=crop&w=800&q=80" alt="Dron VTOL" class="card-img">
                             <span class="card-tag">Híbrido VTOL</span>
@@ -164,13 +164,40 @@
         <!-- SECCIÓN 03: ANATOMÍA 3D (Plató en Estudio Oscuro/Focal) -->
         <section class="section section-studio" id="componentes">
             <div class="container">
-                <div class="section-header text-center">
+                <div class="section-header text-center fade-up">
                     <p class="eyebrow eyebrow-light">03 / ANATOMÍA 3D</p>
                     <h2 class="text-white">Inspección de sistemas.</h2>
                     <p class="section-lead lead-light">Selecciona cualquier componente para aislar su subsistema y analizar sus especificaciones técnicas.</p>
                 </div>
 
-                <div class="viewer-3d-wrapper">
+                <!-- Barra de Filtros por Subsistema -->
+                <div class="subsystem-filter-container fade-up">
+                    <div class="subsystem-filter-bar" id="subsystem-filter-bar">
+                        <button class="filter-chip active" data-filter="all">
+                            <i class="fa-solid fa-layer-group"></i> Todos los Subsistemas
+                        </button>
+                        <button class="filter-chip" data-filter="SISTEMA ÓPTICO">
+                            <i class="fa-solid fa-camera"></i> Óptica
+                        </button>
+                        <button class="filter-chip" data-filter="PROPULSIÓN">
+                            <i class="fa-solid fa-fan"></i> Propulsión
+                        </button>
+                        <button class="filter-chip" data-filter="AVIÓNICA">
+                            <i class="fa-solid fa-microchip"></i> Sensores & Aviónica
+                        </button>
+                        <button class="filter-chip" data-filter="ENERGÍA">
+                            <i class="fa-solid fa-bolt"></i> Energía & Puerto
+                        </button>
+                    </div>
+                </div>
+
+                <div class="viewer-3d-wrapper fade-up">
+                    <!-- Loader / Skeleton durante la carga del 3D -->
+                    <div class="viewer-loader" id="viewer-loader">
+                        <div class="viewer-spinner"></div>
+                        <span class="viewer-loader-text">CARGANDO ARQUITECTURA 3D...</span>
+                    </div>
+
                     <!-- Controles flotantes mínimos -->
                     <div class="viewer-controls-hint">
                         <span><i class="fa-solid fa-fingerprint"></i> Haz clic en los puntos clave para inspeccionar</span>
@@ -193,6 +220,7 @@
                             data-title="Cámara Principal Hasselblad" data-tag="SISTEMA ÓPTICO"
                             data-desc="Sensor CMOS 4/3 con apertura variable f/2.8-f/11. Captura de vídeo en 5.1K y rango dinámico de 12.8 pasos.">
                             <div class="hotspot-dot"></div>
+                            <div class="hotspot-pulse"></div>
                             <div class="hotspot-annotation">CÁMARA PRINCIPAL</div>
                         </button>
 
@@ -203,6 +231,7 @@
                             data-title="Telecámara Secundaria" data-tag="SISTEMA ÓPTICO"
                             data-desc="Sensor CMOS de 1/2 pulgada con zoom híbrido de 28x para observación y reconocimiento a distancia.">
                             <div class="hotspot-dot"></div>
+                            <div class="hotspot-pulse"></div>
                             <div class="hotspot-annotation">TELECÁMARA</div>
                         </button>
 
@@ -213,6 +242,7 @@
                             data-title="Motor Brushless" data-tag="PROPULSIÓN"
                             data-desc="Propulsión magnética sin escobillas optimizada para respuesta inmediata y resistencia a ráfagas de viento de hasta 12 m/s.">
                             <div class="hotspot-dot"></div>
+                            <div class="hotspot-pulse"></div>
                             <div class="hotspot-annotation">MOTOR</div>
                         </button>
 
@@ -220,9 +250,10 @@
                             data-position="-14.516381489095833m 2.35831294014705m -16.04483548411739m"
                             data-normal="-0.5228933991128573m 0.8379228997373974m -0.15642156903660556m"
                             data-target="-14.51m 2.35m -16.04m" data-orbit="-45deg 60deg 20m"
-                            data-title="Hélices de Bajo Ruido" data-tag="AERODINÁMICA"
+                            data-title="Hélices de Bajo Ruido" data-tag="PROPULSIÓN"
                             data-desc="Diseño de geometría fluida con extremos flexibles que reducen la huella acústica y optimizan el consumo de batería.">
                             <div class="hotspot-dot"></div>
+                            <div class="hotspot-pulse"></div>
                             <div class="hotspot-annotation">HÉLICE</div>
                         </button>
 
@@ -233,6 +264,7 @@
                             data-title="Sensores Inferiores" data-tag="AVIÓNICA"
                             data-desc="Sensores ópticos y Time-of-Flight (ToF) para posicionamiento milimétrico a baja altura y aterrizaje seguro.">
                             <div class="hotspot-dot"></div>
+                            <div class="hotspot-pulse"></div>
                             <div class="hotspot-annotation">SENSORES INFERIORES</div>
                         </button>
 
@@ -240,9 +272,10 @@
                             data-position="-3.0097608184804816m 5.027001994718336m 6.1456193486161865m"
                             data-normal="-0.8794338928670803m 0.11489531882223109m 0.46194706816841125m"
                             data-target="-3.00m 5.02m 6.14m" data-orbit="180deg 70deg 20m"
-                            data-title="Sensores Traseros" data-tag="SEGURIDAD"
+                            data-title="Sensores Traseros" data-tag="AVIÓNICA"
                             data-desc="Cámaras estereoscópicas de gran angular para detección proactiva de obstáculos durante desplazamientos posteriores.">
                             <div class="hotspot-dot"></div>
+                            <div class="hotspot-pulse"></div>
                             <div class="hotspot-annotation">SENSORES TRASEROS</div>
                         </button>
 
@@ -250,9 +283,10 @@
                             data-position="0.986103269487502m 4.712711963842072m 7.063240993926598m"
                             data-normal="0.05715581356628421m 0.4348874823805197m 0.8986690662553759m"
                             data-target="0.98m 4.71m 7.06m" data-orbit="160deg 60deg 15m"
-                            data-title="Puerto USB-C / MicroSD" data-tag="HARDWARE"
+                            data-title="Puerto USB-C / MicroSD" data-tag="ENERGÍA"
                             data-desc="Interfaz de transferencia rápida de datos y ranura de memoria compatible con estándar UHS-I V30.">
                             <div class="hotspot-dot"></div>
+                            <div class="hotspot-pulse"></div>
                             <div class="hotspot-annotation">USB-C / MICROSD</div>
                         </button>
 
@@ -263,6 +297,7 @@
                             data-title="Batería Inteligente" data-tag="ENERGÍA"
                             data-desc="Módulo LiPo 4S de 5000 mAh que provee autonomía de hasta 46 minutos con gestión térmica integrada.">
                             <div class="hotspot-dot"></div>
+                            <div class="hotspot-pulse"></div>
                             <div class="hotspot-annotation">BATERÍA</div>
                         </button>
 
@@ -270,9 +305,10 @@
                             data-position="3.332281514919691m 4.88053189970808m -11.489489522331496m"
                             data-normal="0.7531750435786811m 0.21264456814208957m -0.6225027239859404m"
                             data-target="3.44m 5.38m -11.10m" data-orbit="30deg 50deg 20m"
-                            data-title="Detección APAS 5.0" data-tag="AUTONOMÍA"
+                            data-title="Detección APAS 5.0" data-tag="AVIÓNICA"
                             data-desc="Matriz omnidireccional de sensores que procesa mapas tridimensionales del entorno para evitar colisiones.">
                             <div class="hotspot-dot"></div>
+                            <div class="hotspot-pulse"></div>
                             <div class="hotspot-annotation">DETECCIÓN APAS</div>
                         </button>
 
@@ -297,14 +333,14 @@
         <!-- SECCIÓN 04: FLUJO OPERATIVO (Retorno al fondo claro) -->
         <section class="section section-light" id="como-funciona">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header fade-up">
                     <p class="eyebrow">04 / FLUJO OPERATIVO</p>
                     <h2>Lógica de control de vuelo.</h2>
                     <p class="section-lead">Cadena de procesamiento continuo entre la orden remota y la respuesta mecánica.</p>
                 </div>
 
                 <div class="timeline">
-                    <div class="timeline-item">
+                    <div class="timeline-item fade-up">
                         <div class="timeline-badge">01</div>
                         <div class="timeline-content">
                             <span class="tech-step">01. EMISIÓN</span>
@@ -312,7 +348,7 @@
                             <p>La emisora codifica la posición de los joysticks y la transmite mediante radiofrecuencia cifrada a la aeronave.</p>
                         </div>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item fade-up">
                         <div class="timeline-badge">02</div>
                         <div class="timeline-content">
                             <span class="tech-step">02. PROCESAMIENTO</span>
@@ -320,7 +356,7 @@
                             <p>La unidad IMU evalúa giroscopios y acelerómetros para contrastar la actitud real con la trayectoria solicitada.</p>
                         </div>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item fade-up">
                         <div class="timeline-badge">03</div>
                         <div class="timeline-content">
                             <span class="tech-step">03. REGULACIÓN</span>
@@ -328,7 +364,7 @@
                             <p>Los módulos ESC envían impulsos de corriente trifásica modulada para variar las revoluciones de cada motor de forma independiente.</p>
                         </div>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item fade-up">
                         <div class="timeline-badge">04</div>
                         <div class="timeline-content">
                             <span class="tech-step">04. RETROALIMENTACIÓN</span>

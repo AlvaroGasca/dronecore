@@ -388,6 +388,60 @@
     color: rgba(255, 255, 255, 0.7);
 }
 
+/* BARRA DE FILTROS POR SUBSISTEMA */
+.subsystem-filter-container {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+.subsystem-filter-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background: rgba(18, 20, 26, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-chip {
+    background: transparent;
+    border: 1px solid transparent;
+    color: rgba(255, 255, 255, 0.65);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.filter-chip:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.filter-chip.active {
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.filter-chip i {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
 .viewer-3d-wrapper {
     position: relative;
     width: 100%;
@@ -396,17 +450,51 @@
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 24px;
     overflow: hidden;
-    margin-top: 48px;
+    margin-top: 36px;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
 }
 
-model-viewer {
-    width: 100%;
-    height: 100%;
-    --poster-color: transparent;
+/* LOADER / SKELETON 3D */
+.viewer-loader {
+    position: absolute;
+    inset: 0;
+    z-index: 15;
+    background: rgba(10, 11, 14, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
 }
 
-/* --- APARICIÓN SUAVE DEL MODELO 3D --- */
+.viewer-loader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.viewer-spinner {
+    width: 38px;
+    height: 38px;
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: viewerSpinnerSpin 0.9s linear infinite;
+}
+
+@keyframes viewerSpinnerSpin {
+    to { transform: rotate(360deg); }
+}
+
+.viewer-loader-text {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+}
+
 model-viewer {
     width: 100%;
     height: 100%;
@@ -469,6 +557,11 @@ model-viewer.is-loaded {
     position: relative;
     padding: 10px;
     outline: none;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.hotspot.is-dimmed {
+    display: none !important;
 }
 
 .hotspot-dot {
@@ -477,7 +570,43 @@ model-viewer.is-loaded {
     border-radius: 50%;
     background: #ffffff;
     box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25), 0 0 16px rgba(255, 255, 255, 0.6);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.hotspot.is-active .hotspot-dot {
+    background: #ffffff;
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.4), 0 0 28px rgba(255, 255, 255, 0.95);
+    transform: scale(1.4);
+}
+
+.hotspot-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin-top: -12px;
+    margin-left: -12px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+    animation: hotspotPulseAnim 2.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+    opacity: 0;
+}
+
+.hotspot.is-active .hotspot-pulse {
+    border-color: rgba(255, 255, 255, 0.9);
+}
+
+@keyframes hotspotPulseAnim {
+    0% {
+        transform: scale(0.6);
+        opacity: 0.85;
+    }
+    100% {
+        transform: scale(2.4);
+        opacity: 0;
+    }
 }
 
 .hotspot:hover .hotspot-dot {
@@ -505,7 +634,8 @@ model-viewer.is-loaded {
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.hotspot:hover .hotspot-annotation {
+.hotspot:hover .hotspot-annotation,
+.hotspot.is-active .hotspot-annotation {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }
@@ -578,10 +708,14 @@ model-viewer.is-loaded {
 
 /* --- 7. TIMELINE (Sección 04) --- */
 .timeline {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 24px;
     margin-top: 52px;
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
 }
 
 .timeline-item {
@@ -590,7 +724,16 @@ model-viewer.is-loaded {
     border-radius: 20px;
     padding: 32px;
     box-shadow: var(--card-shadow);
-    transition: background-color 0.4s ease, border-color 0.4s ease;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.35s ease,
+                box-shadow 0.35s ease,
+                background-color 0.4s ease;
+}
+
+.timeline-item:hover, .timeline-item.active {
+    transform: translateY(-4px);
+    border-color: var(--text-primary);
+    box-shadow: var(--card-shadow-hover);
 }
 
 .timeline-badge {
@@ -600,6 +743,13 @@ model-viewer.is-loaded {
     opacity: 0.3;
     line-height: 1;
     margin-bottom: 16px;
+    transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.timeline-item.active .timeline-badge {
+    color: var(--text-primary);
+    opacity: 0.9;
+    transform: scale(1.08);
 }
 
 .tech-step {
@@ -609,6 +759,11 @@ model-viewer.is-loaded {
     color: var(--text-muted);
     display: block;
     margin-bottom: 6px;
+    transition: color 0.3s ease;
+}
+
+.timeline-item.active .tech-step {
+    color: var(--text-primary);
 }
 
 .timeline-content h3 {

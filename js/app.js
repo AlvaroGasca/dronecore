@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. Observer para animaciones al hacer scroll (.fade-up y puntos de la timeline)
     function initObserver() {
         const observerOptions = {
-            threshold: 0.15,
+            threshold: 0.2,
             rootMargin: "0px 0px -40px 0px"
         };
 
@@ -32,8 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     
-                    // Activa el punto luminoso de la timeline al llegar con el scroll
+                    // Activa el estado luminoso / destacado de la timeline al llegar con el scroll
                     if (entry.target.classList.contains('timeline-item')) {
+                        entry.target.classList.add('active');
                         const dot = entry.target.querySelector('.timeline-dot');
                         if (dot) dot.classList.add('active');
                     }
