@@ -1,3 +1,7 @@
+/**
+ * DRONES.JS — Control de cámara 3D e inspección de componentes
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
     const viewer = document.querySelector('#drone-viewer');
     const hotspots = document.querySelectorAll('.hotspot');
@@ -7,40 +11,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardTag = document.querySelector('#card-tag');
     const closeCardBtn = document.querySelector('#close-card');
     const resetBtn = document.querySelector('#reset-view-btn');
+    const droneViewer = document.getElementById('drone-viewer');
 
     if (!viewer) return;
 
-    const initialOrbit = viewer.getAttribute('camera-orbit') || '0deg 75deg 100%';
+    // Guardar órbita y objetivo por defecto
+    const initialOrbit = viewer.getAttribute('camera-orbit') || '180deg 75deg 100%';
     const initialTarget = viewer.getAttribute('camera-target') || 'auto auto auto';
 
-    const closeInfoCard = () => {
-        if (infoCard) infoCard.classList.add('hidden');
-        hotspots.forEach(h => h.classList.remove('active'));
-    };
+    if (droneViewer) {
+        // 1. Aparición suave tras la carga
+        droneViewer.addEventListener('load', () => {
+            droneViewer.classList.add('is-loaded');
+        });
 
+        // Si ya estaba en caché y cargó al instante
+        if (droneViewer.loaded) {
+            droneViewer.classList.add('is-loaded');
+        }
+    }
+
+    // Manejo de interacción con hotspots
     hotspots.forEach(hotspot => {
         hotspot.addEventListener('click', (e) => {
             e.stopPropagation();
 
+            // Detener rotación continua al seleccionar un punto
             viewer.removeAttribute('auto-rotate');
 
-            hotspots.forEach(h => h.classList.remove('active'));
-            hotspot.classList.add('active');
+            const orbit = hotspot.dataset.orbit;
+            const target = hotspot.dataset.target;
+            const title = hotspot.dataset.title;
+            const desc = hotspot.dataset.desc;
+            const tag = hotspot.dataset.tag;
 
-            const { orbit, target, title, desc, tag, status } = hotspot.dataset;
-
-            // Transición suave de la cámara hacia el punto exacto
-            if (target) viewer.cameraTarget = target;
+            // Transición de cámara hacia el hotspot objetivo
             if (orbit) viewer.cameraOrbit = orbit;
+            if (target) viewer.cameraTarget = target;
 
-            // Actualizar panel lateral de información
-            if (title && desc && infoCard) {
-                if (cardTitle) cardTitle.textContent = title;
-                if (cardDesc) cardDesc.textContent = desc;
+            // Actualizar tarjeta lateral de información
+            if (title && desc) {
+                cardTitle.textContent = title;
+                cardDesc.textContent = desc;
 
-                if (tag && cardTag) {
+                if (tag) {
                     cardTag.textContent = tag;
-                    cardTag.className = `status ${status || 'status-cyan'}`;
                 }
 
                 infoCard.classList.remove('hidden');
@@ -48,20 +63,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    if (closeCardBtn) closeCardBtn.addEventListener('click', closeInfoCard);
-
-    if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-            viewer.cameraTarget = initialTarget;
-            viewer.cameraOrbit = initialOrbit;
-            viewer.setAttribute('auto-rotate', '');
-            closeInfoCard();
+    // Cerrar la tarjeta informativa
+    if (closeCardBtn) {
+        closeCardBtn.addEventListener('click', () => {
+            infoCard.classList.add('hidden');
         });
     }
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && infoCard && !infoCard.classList.contains('hidden')) {
-            closeInfoCard();
-        }
-    });
+    // Restablecer el encuadre inicial
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            viewer.cameraOrbit = initialOrbit;
+            viewer.cameraTarget = initialTarget;
+            viewer.setAttribute('auto-rotate', '');
+            if (infoCard) infoCard.classList.add('hidden');
+        });
+    }
 });

@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Política de Seguridad (CSP) que permite la compilación 3D de model-viewer y CDNs -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self' https: data: blob:; 
         script-src 'self' 'unsafe-inline' 'unsafe-eval' https://ajax.googleapis.com https://cdnjs.cloudflare.com; 
@@ -17,13 +16,12 @@
     ">
 
     <meta name="description"
-        content="Descubre qué es un dron, cómo funciona, tipos de aeronaves UAV y su anatomía en 3D interactivo.">
+        content="Explora la ingeniería, arquitectura y sistemas de vuelo de los vehículos aéreos no tripulados.">
     <title>Drones — DroneCore</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <!-- Componente 3D oficial de Google -->
@@ -32,15 +30,10 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/drones.css">
 
-    <!-- Script modular de interactividad 3D -->
     <script src="js/drones.js" defer></script>
 </head>
 
 <body class="page-drones">
-
-    <!-- Luces ambientales de fondo -->
-    <div class="ambient-glow glow-1"></div>
-    <div class="ambient-glow glow-2"></div>
 
     <!-- Navbar -->
     <header class="navbar" id="navbar">
@@ -56,14 +49,12 @@
                 <a href="recursos.html">RECURSOS</a>
                 <a href="faq.html">FAQ</a>
             </nav>
-            <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema">
-                <i class="fa-solid fa-moon"></i>
-            </button>
+            <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema"></button>
         </div>
     </header>
 
     <main>
-        <!-- Hero con vídeo de fondo -->
+        <!-- HERO CINEMATOGRÁFICO (Entrada impactante en modo oscuro) -->
         <section id="inicio" class="hero-cinematic">
             <video autoplay muted loop playsinline class="hero-video">
                 <source src="img/drone-forest-2.mp4" type="video/mp4">
@@ -71,337 +62,296 @@
             <div class="hero-overlay"></div>
 
             <div class="container hero-content-clean">
-                <span class="tech-badge-glow"><i class="fa-solid fa-microchip"></i> TECNOLOGÍA UAV / 2026</span>
-                <h1>Entiende la máquina que <span class="text-gradient">hace posible el vuelo</span>.</h1>
-                <p class="hero-subtitle">Un dron es mucho más que una cámara con hélices. Descubre cómo se construye,
-                    qué sistemas necesita para volar y cómo interactúan entre sí en tiempo real.</p>
+                <span class="tech-badge"><i class="fa-solid fa-microchip"></i> INGENIERÍA UAV</span>
+                <h1>Sistemas de vuelo y <span class="text-gradient">arquitectura de precisión</span>.</h1>
+                <p class="hero-subtitle">Una mirada detallada a la interacción entre aerodinámica, sensores ópticos y procesamiento de datos en tiempo real.</p>
                 <div class="hero-cta-group">
-                    <a href="#que-es" class="btn-apple-primary"><i class="fa-solid fa-arrow-down"></i> Empezar
-                        exploración</a>
-                    <a href="#componentes" class="btn-apple-link">Ver Anatomía 3D </a>
+                    <a href="#componentes" class="btn-apple-primary">Explorar Modelo 3D</a>
+                    <a href="#que-es" class="btn-apple-link">Conceptos Operativos <i class="fa-solid fa-chevron-right"></i></a>
                 </div>
             </div>
 
             <a href="#que-es" class="scroll-indicator" aria-label="Bajar a la siguiente sección">
-                <span>EXPLORAR</span>
                 <i class="fa-solid fa-chevron-down"></i>
             </a>
         </section>
 
-        <!-- SECCIÓN 01: CONCEPTOS BÁSICOS -->
-        <section class="section" id="que-es">
+        <!-- SECCIÓN 01: CONCEPTOS BÁSICOS (Limpio / Fondo claro editorial) -->
+        <section class="section section-light" id="que-es">
             <div class="container">
                 <div class="section-header">
-                    <p class="eyebrow">01 / CONCEPTOS BÁSICOS</p>
-                    <h2>¿Qué es realmente un dron?</h2>
+                    <p class="eyebrow">01 / CONCEPTOS CLAVE</p>
+                    <h2>Terminología aeronáutica.</h2>
                     <p class="section-lead">
-                        En el lenguaje cotidiano utilizamos «dron» para todo. Sin embargo, la industria diferencia tres
-                        conceptos clave según el enfoque operativo.
+                        En el ámbito profesional, cada sigla define una dimensión específica del vuelo autónomo y su marco operativo.
                     </p>
                 </div>
 
                 <div class="bento-grid">
                     <div class="bento-box">
                         <div class="bento-header">
-                            <div class="bento-icon-wrapper"><i class="fa-solid fa-plane-up"></i></div>
-                            <span class="status status-blue"><span class="pulse-dot"></span> VEHÍCULO</span>
+                            <span class="bento-tag">AERONAVE</span>
                         </div>
                         <h3>UAV</h3>
-                        <p><strong>Unmanned Aerial Vehicle</strong>. Hace referencia a la aeronave física que vuela sin
-                            piloto a bordo.</p>
+                        <p class="bento-full"><strong>Unmanned Aerial Vehicle</strong>. La estructura física y mecánica que realiza el desplazamiento aéreo sin tripulación a bordo.</p>
                     </div>
 
                     <div class="bento-box">
                         <div class="bento-header">
-                            <div class="bento-icon-wrapper"><i class="fa-solid fa-network-wired"></i></div>
-                            <span class="status status-cyan"><span class="pulse-dot"></span> SISTEMA INTEGRAL</span>
+                            <span class="bento-tag">SISTEMA</span>
                         </div>
                         <h3>UAS</h3>
-                        <p><strong>Unmanned Aircraft System</strong>. El concepto completo: la aeronave + la estación de
-                            control + enlaces de mando.</p>
+                        <p class="bento-full"><strong>Unmanned Aircraft System</strong>. El ecosistema completo: aeronave, estación de tierra, enlaces de datos y software de mando.</p>
                     </div>
 
                     <div class="bento-box">
                         <div class="bento-header">
-                            <div class="bento-icon-wrapper"><i class="fa-solid fa-gamepad"></i></div>
-                            <span class="status status-purple"><span class="pulse-dot"></span> OPERACIÓN REMOTA</span>
+                            <span class="bento-tag">OPERACIÓN</span>
                         </div>
                         <h3>RPAS</h3>
-                        <p><strong>Remotely Piloted Aircraft System</strong>. Término reglamentario cuando un piloto
-                            remoto mantiene la responsabilidad directa del vuelo.</p>
+                        <p class="bento-full"><strong>Remotely Piloted Aircraft System</strong>. Denominación regulatoria aplicada cuando la responsabilidad del vuelo recae en un piloto remoto.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN 02: TIPOS DE DRONES -->
-        <section class="section section-dark" id="tipos">
+        <!-- SECCIÓN 02: TIPOS DE DRONES (Continuidad clara y limpia) -->
+        <section class="section section-light-alt" id="tipos">
             <div class="container">
                 <div class="section-header">
-                    <p class="eyebrow">02 / ARQUITECTURA DE VUELO</p>
-                    <h2>No todos los drones vuelan igual.</h2>
-                    <p class="section-lead">La geometría y disposición de motores determina la velocidad, estabilidad y
-                        autonomía de la misión.</p>
+                    <p class="eyebrow">02 / CONFIGURACIONES DE VUELO</p>
+                    <h2>Plataformas adaptadas a cada misión.</h2>
+                    <p class="section-lead">La arquitectura mecánica determina la maniobrabilidad, el rango de acción y la eficiencia energética.</p>
                 </div>
 
                 <div class="cards-grid">
                     <div class="card card-media">
                         <div class="card-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=800&q=80"
-                                alt="Dron Multirrotor" class="card-img">
-                            <span class="card-tag overlay-tag">Alta Maniobra</span>
+                            <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=800&q=80" alt="Dron Multirrotor" class="card-img">
+                            <span class="card-tag">Alta Maniobra</span>
                         </div>
                         <div class="card-media-body">
-                            <h3><i class="fa-solid fa-fan icon-accent"></i> Multirrotores</h3>
-                            <p>Generan sustentación mediante hélices de tiro vertical. Destacan por el vuelo
-                                estacionario de precisión y maniobras en espacios estrechos.</p>
+                            <h3>Multirrotores</h3>
+                            <p>Sustentación mediante impulso de hélices verticales. Ideales para posicionamiento estático de alta precisión e inspección cercana.</p>
                         </div>
                     </div>
 
                     <div class="card card-media">
                         <div class="card-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80"
-                                alt="Dron Ala Fija" class="card-img">
-                            <span class="card-tag overlay-tag">Gran Autonomía</span>
+                            <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80" alt="Dron Ala Fija" class="card-img">
+                            <span class="card-tag">Gran Autonomía</span>
                         </div>
                         <div class="card-media-body">
-                            <h3><i class="fa-solid fa-plane icon-accent"></i> Ala Fija</h3>
-                            <p>Sus alas generan sustentación aerodinámica al avanzar. Permiten cubrir cientos de
-                                hectáreas consumiendo una fracción de energía.</p>
+                            <h3>Ala Fija</h3>
+                            <p>Sustentación aerodinámica pasiva mediante alas. Diseñados para mapeos cartográficos y cubrimiento de grandes distancias.</p>
                         </div>
                     </div>
 
                     <div class="card card-media">
                         <div class="card-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1507582020474-9a35b7d455d9?auto=format&fit=crop&w=800&q=80"
-                                alt="Dron VTOL" class="card-img">
-                            <span class="card-tag overlay-tag">Híbrido VTOL</span>
+                            <img src="https://images.unsplash.com/photo-1507582020474-9a35b7d455d9?auto=format&fit=crop&w=800&q=80" alt="Dron VTOL" class="card-img">
+                            <span class="card-tag">Híbrido VTOL</span>
                         </div>
                         <div class="card-media-body">
-                            <h3><i class="fa-solid fa-bolt icon-accent"></i> VTOL e Híbridos</h3>
-                            <p>Despegan y aterrizan en vertical como un multirrotor, pero conmutan a modo crucero de ala
-                                fija para maximizar el alcance.</p>
+                            <h3>VTOL e Híbridos</h3>
+                            <p>Despegue y aterrizaje vertical combinado con vuelo de crucero eficiente de ala fija para maximizar versatilidad.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN 03: ANATOMÍA 3D INTERACTIVA MEJORADA -->
-        <section class="section" id="componentes">
+        <!-- SECCIÓN 03: ANATOMÍA 3D (Plató en Estudio Oscuro/Focal) -->
+        <section class="section section-studio" id="componentes">
             <div class="container">
-                <div class="section-header">
-                    <p class="eyebrow">03 / ANATOMÍA INTERACTIVA</p>
-                    <h2>Explora la arquitectura en 3D.</h2>
-                    <p class="section-lead">Haz clic en los puntos sensores para inspeccionar de cerca cada sistema y
-                        componente clave.</p>
+                <div class="section-header text-center">
+                    <p class="eyebrow eyebrow-light">03 / ANATOMÍA 3D</p>
+                    <h2 class="text-white">Inspección de sistemas.</h2>
+                    <p class="section-lead lead-light">Selecciona cualquier componente para aislar su subsistema y analizar sus especificaciones técnicas.</p>
                 </div>
 
                 <div class="viewer-3d-wrapper">
-                    <!-- Instrucciones de uso flotantes -->
+                    <!-- Controles flotantes mínimos -->
                     <div class="viewer-controls-hint">
-                        <span><i class="fa-solid fa-hand-pointer"></i> Haz clic en los sensores para hacer zoom</span>
-                        <span><i class="fa-solid fa-arrows-rotate"></i> Arrastra para libre rotación</span>
+                        <span><i class="fa-solid fa-fingerprint"></i> Haz clic en los puntos clave para inspeccionar</span>
                     </div>
 
-                    <!-- Botón Restablecer Vista -->
                     <button id="reset-view-btn" class="ui-reset-btn" aria-label="Restablecer vista 3D">
-                        <i class="fa-solid fa-rotate-left"></i> Restablecer Vista 360°
+                        <i class="fa-solid fa-rotate-left"></i> Restablecer vista
                     </button>
 
-                    <model-viewer id="drone-viewer" src="assets/models/DJI-Mavic_3.glb"
+                    <model-viewer id="drone-viewer" src="assets/models/DJI-Mavic_3-v1.glb"
                         alt="Modelo 3D interactivo DJI Mavic 3" ar ar-modes="webxr scene-viewer quick-look"
-                        camera-controls auto-rotate tone-mapping="neutral" poster="poster.webp" shadow-intensity="1"
-                        camera-orbit="0deg 75deg 100%" field-of-view="30deg">
+                        camera-controls auto-rotate tone-mapping="neutral" shadow-intensity="1.2"
+                        camera-orbit="180deg 75deg 100%" field-of-view="30deg">
 
-                        <!-- 1. CÁMARA PRINCIPAL -->
+                        <!-- Hotspots Monocromo Táctiles -->
                         <button class="hotspot" slot="hotspot-2"
                             data-position="-0.950846490925354m 0.39710421244303173m -12.438871709955933m"
                             data-normal="-0.0000765950552003562m 0m -0.9999999970665988m"
                             data-target="-0.95m 0.39m -12.43m" data-orbit="0deg 75deg 15m"
-                            data-title="Cámara Principal Hasselblad" data-tag="SISTEMA ÓPTICO" data-status="status-cyan"
-                            data-desc="Sensor CMOS 4/3 profesional con apertura variable f/2.8-f/11. Graba hasta en 5.1K y ofrece un rango dinámico de 12.8 pasos.">
+                            data-title="Cámara Principal Hasselblad" data-tag="SISTEMA ÓPTICO"
+                            data-desc="Sensor CMOS 4/3 con apertura variable f/2.8-f/11. Captura de vídeo en 5.1K y rango dinámico de 12.8 pasos.">
                             <div class="hotspot-dot"></div>
                             <div class="hotspot-annotation">CÁMARA PRINCIPAL</div>
                         </button>
 
-                        <!-- 2. TELECÁMARA -->
                         <button class="hotspot" slot="hotspot-4"
                             data-position="0.630218467244406m 2.0143912579735153m -12.489881863945385m"
                             data-normal="0.000010545030831556434m 0.000003183914587683013m -0.9999999999393325m"
                             data-target="0.63m 2.01m -12.48m" data-orbit="0deg 75deg 15m"
-                            data-title="Telecámara Secundaria" data-tag="SISTEMA ÓPTICO" data-status="status-cyan"
-                            data-desc="Sensor CMOS de 1/2 pulgada con Zoom Híbrido de hasta 28x. Diseñada para exploración y reconocimiento a larga distancia.">
+                            data-title="Telecámara Secundaria" data-tag="SISTEMA ÓPTICO"
+                            data-desc="Sensor CMOS de 1/2 pulgada con zoom híbrido de 28x para observación y reconocimiento a distancia.">
                             <div class="hotspot-dot"></div>
                             <div class="hotspot-annotation">TELECÁMARA</div>
                         </button>
 
-                        <!-- 3. MOTOR -->
                         <button class="hotspot" slot="hotspot-5"
                             data-position="15.845768048774458m 0.7046102819087259m -11.0070817247739m"
                             data-normal="-0.09360038041185925m -0.004395361366322498m -0.9956001454324998m"
                             data-target="15.84m 0.70m -11.00m" data-orbit="45deg 65deg 20m"
-                            data-title="Motor Brushless de Alto Rendimiento" data-tag="PROPULSIÓN"
-                            data-status="status-purple"
-                            data-desc="Motores sin escobillas de respuesta magnética ultrarrápida, optimizados para soportar ráfagas de viento de hasta 12 m/s.">
+                            data-title="Motor Brushless" data-tag="PROPULSIÓN"
+                            data-desc="Propulsión magnética sin escobillas optimizada para respuesta inmediata y resistencia a ráfagas de viento de hasta 12 m/s.">
                             <div class="hotspot-dot"></div>
                             <div class="hotspot-annotation">MOTOR</div>
                         </button>
 
-                        <!-- 4. HÉLICE -->
                         <button class="hotspot" slot="hotspot-6"
                             data-position="-14.516381489095833m 2.35831294014705m -16.04483548411739m"
                             data-normal="-0.5228933991128573m 0.8379228997373974m -0.15642156903660556m"
                             data-target="-14.51m 2.35m -16.04m" data-orbit="-45deg 60deg 20m"
-                            data-title="Hélices de Bajo Ruido" data-tag="AERODINÁMICA" data-status="status-purple"
-                            data-desc="Diseño aerodinámico dinámico con puntas de goma suaves para reducir la firma acústica y mejorar la eficiencia energéticas.">
+                            data-title="Hélices de Bajo Ruido" data-tag="AERODINÁMICA"
+                            data-desc="Diseño de geometría fluida con extremos flexibles que reducen la huella acústica y optimizan el consumo de batería.">
                             <div class="hotspot-dot"></div>
                             <div class="hotspot-annotation">HÉLICE</div>
                         </button>
 
-                        <!-- 5. SENSORES INFERIORES -->
                         <button class="hotspot" slot="hotspot-7"
                             data-position="-1.2203545582694773m -1.2453659955885144m -2.935373235056721m"
                             data-normal="-0.8128139394807661m -0.567739392688582m 0.13040506805855953m"
                             data-target="-1.22m -1.24m -2.93m" data-orbit="0deg 120deg 18m"
-                            data-title="Sensores Inferiores y Auxiliares" data-tag="AVIÓNICA" data-status="status-green"
-                            data-desc="Combinación de sensores ópticos de visión inferior y sensor ToF para precisión milimétrica durante el estacionario y aterrizaje.">
+                            data-title="Sensores Inferiores" data-tag="AVIÓNICA"
+                            data-desc="Sensores ópticos y Time-of-Flight (ToF) para posicionamiento milimétrico a baja altura y aterrizaje seguro.">
                             <div class="hotspot-dot"></div>
                             <div class="hotspot-annotation">SENSORES INFERIORES</div>
                         </button>
 
-                        <!-- 6. SENSORES TRASEROS -->
                         <button class="hotspot" slot="hotspot-11"
                             data-position="-3.0097608184804816m 5.027001994718336m 6.1456193486161865m"
                             data-normal="-0.8794338928670803m 0.11489531882223109m 0.46194706816841125m"
                             data-target="-3.00m 5.02m 6.14m" data-orbit="180deg 70deg 20m"
-                            data-title="Sensores de Visión Traseros" data-tag="SEGURIDAD" data-status="status-green"
-                            data-desc="Cámaras de gran angular dedicadas a la detección posterior de obstáculos en tiempo real durante maniobras de marcha atrás.">
+                            data-title="Sensores Traseros" data-tag="SEGURIDAD"
+                            data-desc="Cámaras estereoscópicas de gran angular para detección proactiva de obstáculos durante desplazamientos posteriores.">
                             <div class="hotspot-dot"></div>
                             <div class="hotspot-annotation">SENSORES TRASEROS</div>
                         </button>
 
-                        <!-- 7. PUERTO USB-C / MICROSD -->
                         <button class="hotspot" slot="hotspot-12"
                             data-position="0.986103269487502m 4.712711963842072m 7.063240993926598m"
                             data-normal="0.05715581356628421m 0.4348874823805197m 0.8986690662553759m"
                             data-target="0.98m 4.71m 7.06m" data-orbit="160deg 60deg 15m"
-                            data-title="Conectividad y Almacenamiento" data-tag="HARDWARE" data-status="status-orange"
-                            data-desc="Puerto USB-C de alta velocidad para descarga directa de datos y ranura MicroSD compatible con tarjetas UHS-I V30 de hasta 2TB.">
+                            data-title="Puerto USB-C / MicroSD" data-tag="HARDWARE"
+                            data-desc="Interfaz de transferencia rápida de datos y ranura de memoria compatible con estándar UHS-I V30.">
                             <div class="hotspot-dot"></div>
                             <div class="hotspot-annotation">USB-C / MICROSD</div>
                         </button>
 
-                        <!-- 8. BATERÍA -->
                         <button class="hotspot" slot="hotspot-13"
                             data-position="1.6501700216990314m 1.1857987574910136m 7.678183268240787m"
                             data-normal="0.10271622336143571m -0.19354856320928057m 0.975698893684925m"
                             data-target="1.65m 1.18m 7.67m" data-orbit="180deg 80deg 22m"
-                            data-title="Batería Inteligente de Vuelo" data-tag="ENERGÍA" data-status="status-orange"
-                            data-desc="Batería LiPo 4S de 5000 mAh que proporciona hasta 46 minutos de tiempo de vuelo continuo con autodescarga de seguridad.">
+                            data-title="Batería Inteligente" data-tag="ENERGÍA"
+                            data-desc="Módulo LiPo 4S de 5000 mAh que provee autonomía de hasta 46 minutos con gestión térmica integrada.">
                             <div class="hotspot-dot"></div>
                             <div class="hotspot-annotation">BATERÍA</div>
                         </button>
 
-                        <!-- 9. SISTEMA OMNIDIRECCIONAL -->
                         <button class="hotspot" slot="hotspot-15"
-                            data-position="3.4482497221572292m 5.387661478140883m -11.106159302859282m"
-                            data-normal="0.7262365427605267m -0.01723229445353682m -0.6872288788948732m"
+                            data-position="3.332281514919691m 4.88053189970808m -11.489489522331496m"
+                            data-normal="0.7531750435786811m 0.21264456814208957m -0.6225027239859404m"
                             data-target="3.44m 5.38m -11.10m" data-orbit="30deg 50deg 20m"
-                            data-title="Detección Omnidireccional APAS 5.0" data-tag="AUTONOMÍA"
-                            data-status="status-green"
-                            data-desc="Múltiples sensores de visión de gran angular integrados que escanean continuamente el entorno en 360° para planificar rutas seguras.">
+                            data-title="Detección APAS 5.0" data-tag="AUTONOMÍA"
+                            data-desc="Matriz omnidireccional de sensores que procesa mapas tridimensionales del entorno para evitar colisiones.">
                             <div class="hotspot-dot"></div>
-                            <div class="hotspot-annotation">SISTEMA OMNIDIRECCIONAL</div>
+                            <div class="hotspot-annotation">DETECCIÓN APAS</div>
                         </button>
 
-                        <!-- Elementos AR y progreso -->
                         <div class="progress-bar hide" slot="progress-bar">
                             <div class="update-bar"></div>
                         </div>
-                        <button slot="ar-button" id="ar-button">
-                            Ver en tu espacio (AR)
-                        </button>
                     </model-viewer>
 
-                    <!-- Tarjeta Informativa Flotante (Glassmorphic Card) -->
+                    <!-- Tarjeta Informativa Flotante -->
                     <aside id="info-card" class="info-card hidden">
                         <button id="close-card" class="close-card-btn" aria-label="Cerrar panel">&times;</button>
                         <div class="info-card-header">
-                            <span id="card-tag" class="status status-cyan">COMPONENTE</span>
+                            <span id="card-tag" class="info-card-tag">COMPONENTE</span>
                         </div>
                         <h3 id="card-title">Selecciona un componente</h3>
-                        <p id="card-desc">Haz clic en cualquier punto intermitente del dron para ver sus
-                            especificaciones técnicas y realizar zoom automático.</p>
+                        <p id="card-desc">Haz clic en cualquier punto del modelo para explorar sus especificaciones técnicas.</p>
                     </aside>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN 04: FLUJO OPERATIVO -->
-        <section class="section section-dark" id="como-funciona">
+        <!-- SECCIÓN 04: FLUJO OPERATIVO (Retorno al fondo claro) -->
+        <section class="section section-light" id="como-funciona">
             <div class="container">
                 <div class="section-header">
                     <p class="eyebrow">04 / FLUJO OPERATIVO</p>
-                    <h2>Del mando al aire en milisegundos.</h2>
-                    <p class="section-lead">Cadena de decisiones automáticas que ocurre cada vez que mueves un stick.
-                    </p>
+                    <h2>Lógica de control de vuelo.</h2>
+                    <p class="section-lead">Cadena de procesamiento continuo entre la orden remota y la respuesta mecánica.</p>
                 </div>
 
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-badge">01</div>
                         <div class="timeline-content">
-                            <span class="tech-tag">Paso 01 — Emisión</span>
-                            <h3>El piloto da una orden</h3>
-                            <p>El stick de la emisora transmite una señal de radio en la banda de 2.4 GHz o 5.8 GHz con
-                                las intenciones de movimiento.</p>
+                            <span class="tech-step">01. EMISIÓN</span>
+                            <h3>Transmisión de comando</h3>
+                            <p>La emisora codifica la posición de los joysticks y la transmite mediante radiofrecuencia cifrada a la aeronave.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-badge">02</div>
                         <div class="timeline-content">
-                            <span class="tech-tag">Paso 02 — Cálculo</span>
-                            <h3>La controladora procesa los datos</h3>
-                            <p>Compara la orden del piloto con la actitud actual medida por los giroscopios y calcula la
-                                corrección de potencia.</p>
+                            <span class="tech-step">02. PROCESAMIENTO</span>
+                            <h3>Cálculo de actitud</h3>
+                            <p>La unidad IMU evalúa giroscopios y acelerómetros para contrastar la actitud real con la trayectoria solicitada.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-badge">03</div>
                         <div class="timeline-content">
-                            <span class="tech-tag">Paso 03 — Ajuste</span>
-                            <h3>Los variadores (ESC) actúan</h3>
-                            <p>Envían pulsos de corriente a cada motor brushless individual, cambiando instantáneamente
-                                la velocidad de rotación de las hélices.</p>
+                            <span class="tech-step">03. REGULACIÓN</span>
+                            <h3>Ajuste de los variadores</h3>
+                            <p>Los módulos ESC envían impulsos de corriente trifásica modulada para variar las revoluciones de cada motor de forma independiente.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-badge">04</div>
                         <div class="timeline-content">
-                            <span class="tech-tag">Paso 04 — Feedback</span>
-                            <h3>Bucle de retroalimentación</h3>
-                            <p>Los sensores leen el nuevo estado de la aeronave en tiempo real y reajustan el empuje
-                                continuamente frente a rachas de viento.</p>
+                            <span class="tech-step">04. RETROALIMENTACIÓN</span>
+                            <h3>Estabilización continua</h3>
+                            <p>El bucle de control realiza correcciones automáticas miles de veces por segundo frente a perturbaciones de viento.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN 05: SIGUIENTE PASO -->
-        <section class="section" id="siguiente-paso">
+        <!-- SECCIÓN 05: BANNER FINAL (Bloque oscuro de contraste) -->
+        <section class="section section-cta-dark" id="siguiente-paso">
             <div class="container">
                 <div class="cta-banner">
                     <div class="cta-banner-content">
-                        <p class="eyebrow">05 / CONTINÚA TU FORMACIÓN</p>
-                        <h2>Conoces la tecnología. Domina la operación.</h2>
-                        <p>No despegues sin conocer las reglas del juego ni las zonas geográficas permitidas.</p>
+                        <p class="eyebrow eyebrow-light">05 / SIGUIENTE PASO</p>
+                        <h2>Marco operativo y legislación.</h2>
+                        <p>El conocimiento técnico debe complementarse con el marco regulatorio oficial EASA antes de operar.</p>
                     </div>
                     <div class="cta-banner-actions">
-                        <a href="normativa.html" class="btn-apple-primary"><i class="fa-solid fa-scale-balanced"></i>
-                            Ver Normativa EASA</a>
-                        <a href="mapas.html" class="btn-apple-link">Consultar Mapas </a>
+                        <a href="normativa.html" class="btn-apple-primary">Ver Normativa EASA</a>
+                        <a href="mapas.html" class="btn-apple-link text-white">Consultar Mapas <i class="fa-solid fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -412,77 +362,16 @@
         <div class="container footer-content">
             <div class="footer-brand">
                 <span class="logo-mark">DC</span> DRONE<span>CORE</span>
-                <p>Conocimiento y precisión para volar con criterio.</p>
+                <p>Plataforma de conocimiento y precisión en tecnología UAV.</p>
             </div>
             <div class="footer-meta">
-                <p>DRONECORE UAV / © 2026</p>
+                <p>© 2026 DRONECORE</p>
             </div>
         </div>
     </footer>
 
-    <!-- Lógica de Interacción 3D y Zoom Automático -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const viewer = document.querySelector('#drone-viewer');
-            const hotspots = document.querySelectorAll('.hotspot');
-            const infoCard = document.querySelector('#info-card');
-            const cardTitle = document.querySelector('#card-title');
-            const cardDesc = document.querySelector('#card-desc');
-            const cardTag = document.querySelector('#card-tag');
-            const closeCardBtn = document.querySelector('#close-card');
-            const resetBtn = document.querySelector('#reset-view-btn');
-
-            // Guardar orbita y objetivo original
-            const initialOrbit = viewer.getAttribute('camera-orbit') || '0deg 75deg 100%';
-            const initialTarget = viewer.getAttribute('camera-target') || 'auto auto auto';
-
-            hotspots.forEach(hotspot => {
-                hotspot.addEventListener('click', (e) => {
-                    e.stopPropagation();
-
-                    // Pausar rotación automática al enfocar un componente
-                    viewer.removeAttribute('auto-rotate');
-
-                    const orbit = hotspot.dataset.orbit;
-                    const target = hotspot.dataset.target;
-                    const title = hotspot.dataset.title;
-                    const desc = hotspot.dataset.desc;
-                    const tag = hotspot.dataset.tag;
-                    const statusClass = hotspot.dataset.status || 'status-cyan';
-
-                    // Transición suave de la cámara al hotspot
-                    if (orbit) viewer.cameraOrbit = orbit;
-                    if (target) viewer.cameraTarget = target;
-
-                    // Actualizar y desplegar la tarjeta lateral de información
-                    if (title && desc) {
-                        cardTitle.textContent = title;
-                        cardDesc.textContent = desc;
-
-                        if (tag) {
-                            cardTag.textContent = tag;
-                            cardTag.className = `status ${statusClass}`;
-                        }
-
-                        infoCard.classList.remove('hidden');
-                    }
-                });
-            });
-
-            // Cerrar la tarjeta informativa
-            closeCardBtn.addEventListener('click', () => {
-                infoCard.classList.add('hidden');
-            });
-
-            // Botón para restablecer la vista inicial
-            resetBtn.addEventListener('click', () => {
-                viewer.cameraOrbit = initialOrbit;
-                viewer.cameraTarget = initialTarget;
-                viewer.setAttribute('auto-rotate', '');
-                infoCard.classList.add('hidden');
-            });
-        });
-    </script>
+    <!-- JS Global -->
+    <script src="js/app.js"></script>
 </body>
 
 </html>
