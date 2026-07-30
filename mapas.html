@@ -1,155 +1,232 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description"
-        content="Aprende a consultar ENAIRE Drones, CTR, ATZ y restricciones para planificar vuelos en España.">
-    <meta property="og:title" content="Mapas y espacio aéreo | DroneCore">
-    <title>Mapas y espacio aéreo | DroneCore</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSP Limpia y Ajustada para APIs, Estilos, Leaflet y Servidor REST de ENAIRE -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self' https: data: blob:; 
+        script-src 'self' 'unsafe-inline' https://ajax.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; 
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; 
+        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; 
+        img-src 'self' data: https:; 
+        media-src 'self' https:; 
+        connect-src 'self' https: https://api.open-meteo.com https://servais.enaire.es blob:;
+    ">
+
+    <meta name="description" content="Aprende a consultar ENAIRE Drones, CTR, ATZ y condiciones meteorológicas para planificar vuelos en España.">
+    <title>Mapas y Espacio Aéreo | DroneCore</title>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "DroneCore - Espacio Aéreo y Planificación de Vuelo UAS",
+      "url": "https://dronecore.pages.dev/mapas.html",
+      "description": "Herramienta de consulta, meteorología en tiempo real y geolocalización para operaciones con drones.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "author": {
+        "@type": "Organization",
+        "name": "DroneCore"
+      }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS de Leaflet (Mapa Interactivo) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/mapas.css">
+    <link rel="stylesheet" href="css/normativa.css">
 </head>
 
-<body>
-    <header class="site-header">
-        <div class="container site-header__inner"><a class="site-logo" href="index.html"><span
-                    class="site-logo__mark">DC</span><span class="site-logo__text">DRONE<span>CORE</span></span></a>
-            <nav class="site-nav" aria-label="Navegación"><a class="nav-link" href="index.html">Inicio</a><a
-                    class="nav-link" href="drones.html">Drones</a><a class="nav-link"
-                    href="normativa.html">Normativa</a><a class="nav-link" href="titulaciones.html">Titulaciones</a><a
-                    class="nav-link is-active" href="mapas.html">Mapas</a><a class="nav-link" href="#viajes">Viajes</a><a class="nav-link"
-                    href="recursos.html">Recursos</a><a class="nav-link" href="faq.html">FAQ</a></nav>
-            <div class="header-actions"><button class="theme-toggle" aria-label="Cambiar tema"><i
-                        class="fa-solid fa-moon"></i></button><button class="nav-toggle" aria-label="Abrir menú"
-                    aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
-            </div>
+<body class="page-mapas">
+
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo" aria-label="Ir al inicio">
+                <span class="logo-mark">DC</span> DRONECORE
+            </a>
+            <nav class="nav-links">
+                <a href="drones.html">DRONES</a>
+                <a href="normativa.html">NORMATIVA</a>
+                <a href="titulaciones.html">TITULACIONES</a>
+                <a href="mapas.html" class="active">MAPAS</a>
+                <a href="recursos.html">RECURSOS</a>
+                <a href="faq.html">FAQ</a>
+            </nav>
+            <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema"></button>
         </div>
-        <nav class="mobile-nav" id="mobile-nav"><a class="nav-link" href="index.html">Inicio</a><a class="nav-link"
-                href="drones.html">Drones</a><a class="nav-link" href="normativa.html">Normativa</a><a class="nav-link"
-                href="titulaciones.html">Titulaciones</a><a class="nav-link is-active" href="mapas.html">Mapas</a><a class="nav-link" href="#viajes">Viajes</a><a
-                class="nav-link" href="recursos.html">Recursos</a><a class="nav-link" href="faq.html">FAQ</a></nav>
     </header>
+
     <main>
-        <section class="page-hero">
-            <div class="hero__media" aria-hidden="true">
-                <video class="hero__video" autoplay muted loop playsinline preload="auto">
-                    <source src="img/drone-forest-2.mp4" type="video/mp4">
-                </video>
-                <div class="hero__overlay"></div>
+        <!-- HERO CINEMATOGRÁFICO -->
+        <section id="inicio" class="hero-cinematic">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="img/drone-forest-2.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+
+            <div class="container hero-content-clean fade-up">
+                <span class="tech-badge"><i class="fa-solid fa-map-location-dot"></i> 04 / PLANIFICACIÓN</span>
+                <h1>Antes de volar, <span class="text-gradient">mira el mapa</span>.</h1>
+                <p class="hero-subtitle">Haz clic en cualquier punto de España para consultar la meteo local y obtener al instante las tarjetas de restricciones oficiales de ENAIRE.</p>
+                <div class="hero-cta-group">
+                    <a href="#workspace" class="btn-apple-primary">Abrir Espacio de Trabajo <i class="fa-solid fa-arrow-down" style="margin-left:6px;"></i></a>
+                    <a href="https://drones.enaire.es/" target="_blank" rel="noopener" class="btn-apple-link">Abrir ENAIRE Oficial <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left:4px;"></i></a>
+                </div>
             </div>
+
+            <a href="#workspace" class="scroll-indicator" aria-label="Bajar a la siguiente sección">
+                <i class="fa-solid fa-chevron-down"></i>
+            </a>
+        </section>
+
+        <!-- ESPACIO DE TRABAJO: METEOROLOGÍA Y MAPA ENAIRE -->
+        <section class="section section-studio" id="workspace">
             <div class="container">
-                <p class="section__eyebrow">04 / PLANIFICACIÓN</p>
-                <h1>Antes de volar, mira el mapa.</h1>
-                <p>El espacio aéreo cambia según el lugar y la operación. ENAIRE Drones es la consulta esencial para
-                    conocer las zonas geográficas y sus condiciones.</p>
-                <div class="hero__actions"><a class="btn btn--primary" target="_blank" rel="noopener"
-                        href="https://drones.enaire.es/">Abrir ENAIRE Drones <span>↗</span></a></div>
+                <div class="section-header text-center fade-up">
+                    <p class="eyebrow eyebrow-light">PLANIFICACIÓN PRE-VUELO</p>
+                    <h2 class="text-white">Panel de Espacio Aéreo y Meteo</h2>
+                    <p class="section-lead lead-light" style="margin: 0 auto;">Haz clic en cualquier punto del mapa para medir condiciones meteorológicas y analizar las geozonas oficiales de ENAIRE.</p>
+                </div>
+
+                <!-- BARRA METEOROLÓGICA Y GEOLOCALIZACIÓN -->
+                <div class="meteo-bar fade-up" id="meteo-widget">
+                    <div class="meteo-item">
+                        <i class="fa-solid fa-wind text-blue"></i>
+                        <span class="meteo-label">Viento:</span>
+                        <strong id="meteo-wind">-- km/h</strong>
+                    </div>
+                    <div class="meteo-item">
+                        <i class="fa-solid fa-sun text-gold"></i>
+                        <span class="meteo-label">Índice KP:</span>
+                        <span id="meteo-kp" class="meteo-badge badge-green">--</span>
+                    </div>
+                    <div class="meteo-item">
+                        <i class="fa-solid fa-eye text-blue"></i>
+                        <span class="meteo-label">Visibilidad:</span>
+                        <strong id="meteo-vis">-- km</strong>
+                    </div>
+                    <div class="meteo-item meteo-location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span id="meteo-coords">Madrid (Centro)</span>
+                    </div>
+                    <button id="geo-btn" class="btn-geo" aria-label="Obtener mi ubicación actual">
+                        <i class="fa-solid fa-location-crosshairs"></i>
+                        <span>Usar mi ubicación</span>
+                    </button>
+                </div>
+
+                <!-- GRID EN 2 COLUMNAS (MAPA + INSPECTOR DE RESTRICCIONES) -->
+                <div class="workspace-grid fade-up">
+                    <!-- COLUMNA IZQUIERDA: MAPA -->
+                    <div class="workspace-wrapper" id="workspace-container" style="margin:0;">
+                        <div class="workspace-header">
+                            <div class="window-controls">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="workspace-title">
+                                <i class="fa-solid fa-map-pin"></i> Seleccionador de Coordenadas
+                            </div>
+                            <button class="btn-icon" id="reload-meteo" title="Actualizar datos" aria-label="Actualizar datos">
+                                <i class="fa-solid fa-rotate-right"></i>
+                            </button>
+                        </div>
+                        <div id="enaire-map"></div>
+                    </div>
+
+                    <!-- COLUMNA DERECHA: INSPECTOR DE GEOZONAS -->
+                    <div class="workspace-inspector" id="inspector-panel">
+                        <div class="inspector-header">
+                            <h3><i class="fa-solid fa-list-check text-gold"></i> Ficha de Espacio Aéreo</h3>
+                            <span id="selected-coords-badge" style="font-size:0.78rem; color:#94a3b8; background:rgba(255,255,255,0.06); padding:3px 8px; border-radius:4px;">Haz clic en el mapa</span>
+                        </div>
+                        <div class="inspector-body" id="restrictions-container">
+                            <div style="text-align:center; padding: 40px 20px; color:#94a3b8;">
+                                <i class="fa-solid fa-arrow-pointer" style="font-size:2rem; margin-bottom:12px; display:block; color:#f59e0b;"></i>
+                                <p style="font-size:0.95rem; margin:0;">Selecciona un punto en el mapa para analizar las geozonas ENAIRE registradas y sus requisitos legales.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
-        <section class="section">
-            <div class="container page-layout">
-                <article class="content">
-                    <section class="content-section" id="enaire">
-                        <p class="section__eyebrow">HERRAMIENTA PRINCIPAL</p>
-                        <h2>Cómo leer ENAIRE Drones</h2>
-                        <p>Busca el punto exacto de despegue y revisa las capas activas. No te quedes solo con el color:
-                            abre el detalle de cada zona para leer su límite de altura, horario, contacto, necesidad de
-                            coordinación y cualquier condición adicional.</p>
-                        <ul class="checklist">
-                            <li>Busca el lugar y dibuja mentalmente toda tu zona de operación.</li>
-                            <li>Activa capas de zonas geográficas, aeródromos y espacios protegidos.</li>
-                            <li>Lee avisos temporales y consulta la información justo antes de salir.</li>
-                            <li>Guarda o anota las condiciones relevantes de tu planificación.</li>
-                        </ul>
-                    </section>
-                    <section class="content-section" id="espacio">
-                        <p class="section__eyebrow">CONCEPTOS DEL MAPA</p>
-                        <h2>CTR, ATZ y otras siglas</h2>
-                        <div class="grid grid--2">
-                            <article class="resource-card">
-                                <h3>CTR</h3>
-                                <p>Zona de control asociada a un aeropuerto. Puede requerir coordinación o autorización;
-                                    nunca asumas que puedes volar solo por estar a baja altura.</p>
-                            </article>
-                            <article class="resource-card">
-                                <h3>ATZ</h3>
-                                <p>Zona de tránsito de aeródromo. Protege el tráfico en torno a determinados aeródromos
-                                    y exige especial atención a sus condiciones.</p>
-                            </article>
-                            <article class="resource-card">
-                                <h3>Espacio aéreo</h3>
-                                <p>El cielo está organizado en áreas con reglas y servicios distintos. El mapa te
-                                    muestra qué afecta a tu localización.</p>
-                            </article>
-                            <article class="resource-card">
-                                <h3>Zona geográfica UAS</h3>
-                                <p>Área con una restricción, prohibición o condición específica para drones, publicada
-                                    por la autoridad competente.</p>
-                            </article>
-                        </div>
-                    </section>
-                    <section class="content-section" id="colores">
-                        <p class="section__eyebrow">COLORES Y RESTRICCIONES</p>
-                        <h2>El color avisa; el detalle decide.</h2>
-                        <p>Los colores ayudan a localizar rápidamente restricciones, pero su significado y las capas
-                            disponibles pueden evolucionar. Un área coloreada puede implicar prohibición, límite de
-                            altura, necesidad de coordinación u otra condición. Pulsa siempre sobre ella y lee la ficha
-                            oficial.</p>
-                        <div class="info-box info-box--warning"><strong>No planifiques con una captura antigua.</strong>
-                            Los NOTAM, eventos, emergencias y cambios de configuración pueden modificar temporalmente
-                            las condiciones de vuelo.</div>
-                    </section>
 
-                    <section class="content-section" id="viajes">
-                        <p class="section__eyebrow">VIAJAR CON TU DRON</p>
-                        <h2>¿Vas a volar en otro país de Europa?</h2>
-                        <p>Las reglas europeas de UAS están armonizadas en gran medida, pero cada Estado establece sus propias zonas geográficas y puede imponer condiciones específicas. Antes de volar fuera de España, consulta siempre el mapa y la información oficial del país de destino.</p>
-                        <div class="info-box">
-                            <strong>Consejo:</strong> no te quedes solo con la normativa general europea. Comprueba las restricciones geográficas vigentes en el lugar exacto donde quieres despegar y revisa la información justo antes de cada operación.
+        <!-- LEYENDA Y CONCEPTOS -->
+        <section class="section section-light-alt" id="conceptos">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <p class="eyebrow">DICCIONARIO AÉREO</p>
+                    <h2>El color avisa; el detalle decide.</h2>
+                    <p class="section-lead">Un área coloreada puede implicar prohibición, límite de altura o necesidad de coordinación. Pulsa siempre sobre ella en la plataforma oficial.</p>
+                </div>
+
+                <div class="bento-grid fade-up">
+                    <div class="bento-box">
+                        <div class="bento-header">
+                            <span class="bento-tag"><i class="fa-solid fa-plane-arrival"></i> AEROPUERTOS</span>
                         </div>
-                        <div class="grid grid--2">
-                            <article class="resource-card">
-                                <i class="fa-solid fa-earth-europe" aria-hidden="true"></i>
-                                <h3>Consulta el país de destino</h3>
-                                <p>Accede a la información publicada por la autoridad aeronáutica nacional para conocer dónde puedes volar, las zonas restringidas y los trámites necesarios.</p>
-                                <a class="card-link" target="_blank" rel="noopener" href="https://www.easa.europa.eu/en/domains/civil-drones/naa">Ver recursos oficiales por país ↗</a>
-                            </article>
-                            <article class="resource-card">
-                                <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
-                                <h3>Busca el mapa oficial</h3>
-                                <p>Cada Estado miembro publica sus propias zonas geográficas UAS. Algunas autoridades ofrecen mapas digitales y otras proporcionan cartas o aplicaciones oficiales.</p>
-                                <a class="card-link" target="_blank" rel="noopener" href="https://www.easa.europa.eu/es/light/topics/geo-zones-know-where-fly-your-drone">Cómo consultar las geozonas ↗</a>
-                            </article>
+                        <h3>CTR</h3>
+                        <p class="bento-full">Zona de control asociada a un aeropuerto. Requiere coordinación o autorización previa; nunca asumas que puedes volar solo por estar a baja altura.</p>
+                    </div>
+                    
+                    <div class="bento-box">
+                        <div class="bento-header">
+                            <span class="bento-tag"><i class="fa-solid fa-tower-observation"></i> AERÓDROMOS</span>
                         </div>
-                        <h3 class="travel-checklist-title">Antes de viajar, comprueba</h3>
-                        <ul class="checklist">
-                            <li>Que tu registro de operador y la documentación necesaria sean válidos para la operación que vas a realizar.</li>
-                            <li>Los requisitos de formación o competencia aplicables a tu operación.</li>
-                            <li>Las zonas geográficas UAS del país y las posibles autorizaciones de vuelo.</li>
-                            <li>Las restricciones locales relacionadas con aeropuertos, espacios naturales, instalaciones sensibles o eventos.</li>
-                            <li>Las condiciones para transportar baterías de litio y el equipaje permitido por la aerolínea si viajas en avión.</li>
-                        </ul>
-                        <div class="info-box info-box--warning">
-                            <strong>Importante:</strong> la información de esta sección sirve como punto de partida. Para planificar un vuelo real, utiliza siempre las fuentes oficiales y los datos actualizados de la autoridad competente del país donde vayas a operar.
+                        <h3>ATZ</h3>
+                        <p class="bento-full">Zona de tránsito de aeródromo. Protege el tráfico en torno a determinados aeródromos y exige atención a sus condiciones específicas.</p>
+                    </div>
+
+                    <div class="bento-box">
+                        <div class="bento-header">
+                            <span class="bento-tag"><i class="fa-solid fa-cloud"></i> ENTORNO</span>
                         </div>
-                    </section>
-                </article>
-                <aside class="page-index" data-auto-index><strong>EN ESTA GUÍA</strong></aside>
+                        <h3>Espacio aéreo</h3>
+                        <p class="bento-full">El cielo está organizado en áreas con reglas y servicios distintos. El mapa te muestra qué afecta a tu ubicación exacta.</p>
+                    </div>
+
+                    <div class="bento-box">
+                        <div class="bento-header">
+                            <span class="bento-tag"><i class="fa-solid fa-draw-polygon"></i> LIMITACIONES</span>
+                        </div>
+                        <h3>Zona UAS</h3>
+                        <p class="bento-full">Área con restricción, prohibición o condición específica para drones publicada por la autoridad competente.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-    <footer class="site-footer">
-        <div class="container site-footer__inner">
-            <div><a class="site-logo" href="index.html"><span class="site-logo__mark">DC</span><span
-                        class="site-logo__text">DRONE<span>CORE</span></span></a>
-                <p>Planifica antes de despegar.</p>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="logo-mark">DC</span> DRONE<span>CORE</span>
+                <p>Plataforma de conocimiento y precisión en tecnología UAV.</p>
             </div>
-            <p class="site-footer__meta">DRONECORE / 2026</p>
+            <div class="footer-meta">
+                <p>© 2026 DRONECORE</p>
+            </div>
         </div>
-    </footer><button class="back-to-top" aria-label="Volver arriba"><i class="fa-solid fa-arrow-up"></i></button>
-    <script src="js/main.js" defer></script>
+    </footer>
+
+    <!-- JavaScript Leaflet y Aplicación -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/mapas.js"></script>
 </body>
 
 </html>
