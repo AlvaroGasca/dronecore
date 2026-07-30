@@ -71,33 +71,88 @@ document.addEventListener('DOMContentLoaded', () => {
     initMap();
 
     // -------------------------------------------------------------
+    // CONVERSOR DE COORDENADAS: Decimal a Formato ENAIRE (DMS Continuo)
+    // -------------------------------------------------------------
+    function decimalToEnaire(lat, lon) {
+        function toDMS(coordinate, isLat) {
+            const absolute = Math.abs(coordinate);
+            const degrees = Math.floor(absolute);
+            const minutesNotTruncated = (absolute - degrees) * 60;
+            const minutes = Math.floor(minutesNotTruncated);
+            
+            // Forzar 6 decimales en los segundos para igualar a ENAIRE
+            let seconds = ((minutesNotTruncated - minutes) * 60).toFixed(6);
+            
+            // Formateo de ceros a la izquierda
+            let degStr = degrees.toString();
+            degStr = isLat ? degStr.padStart(2, '0') : degStr.padStart(3, '0');
+            
+            const minStr = minutes.toString().padStart(2, '0');
+            
+            // Los segundos deben tener 2 dígitos enteros + el punto + 6 decimales (ej. 05.123456)
+            const secStr = seconds.padStart(9, '0'); 
+
+            let direction = '';
+            if (isLat) {
+                direction = coordinate >= 0 ? 'N' : 'S';
+            } else {
+                direction = coordinate >= 0 ? 'E' : 'W';
+            }
+
+            return `${degStr}${minStr}${secStr}${direction}`;
+        }
+
+        const latEnaire = toDMS(lat, true);
+        const lonEnaire = toDMS(lon, false);
+
+        return `${latEnaire} ${lonEnaire}`;
+    }
+
+    // -------------------------------------------------------------
     // 2. ACTUALIZACIÓN DE PUNTO Y CONSULTA
     // -------------------------------------------------------------
     function actualizarPuntoVuelo(lat, lon, nombreLugar = null) {
         currentLat = lat;
         currentLon = lon;
 
+        // 1. Obtener coordenadas estándar (Decimales)
         const latFixed = lat.toFixed(5);
         const lonFixed = lon.toFixed(5);
-        const coordsStr = `${latFixed}, ${lonFixed}`;
+        const coordsStrDecimal = `${latFixed}, ${lonFixed}`;
 
-        if (coordsBadge) coordsBadge.textContent = coordsStr;
+        // 2. Obtener coordenadas formato ENAIRE (DMS)
+        const coordsStrEnaire = decimalToEnaire(lat, lon);
 
+        // Actualizar el "badge" o indicador de la UI con el formato ENAIRE
+        if (coordsBadge) coordsBadge.textContent = coordsStrEnaire;
+
+        // Lanzar consultas de datos
         fetchWeatherData(lat, lon, nombreLugar);
         consultarRestriccionesEnaire(lat, lon);
 
+        // Crear popup con ambas nomenclaturas integrado con el Dark Theme de DroneCore
         const popupContent = `
-            <div style="text-align: center; font-family: Inter, system-ui, sans-serif; padding: 4px;">
-                <strong style="display:block; margin-bottom:2px; font-size: 13px; color: #111;">Punto Seleccionado</strong>
-                <span style="font-size: 12px; color: #555; display:block; margin-bottom: 8px;">${coordsStr}</span>
-                <div style="display:flex; gap:6px; justify-content:center;">
-                    <button onclick="window.copiarCoordenadas('${coordsStr}', this)" 
-                            style="background:#334155; color:white; border:none; padding:6px 10px; border-radius:5px; cursor:pointer; font-size: 11px; font-weight:600;">
-                        <i class="fa-regular fa-copy"></i> Copiar Coords
+            <div style="text-align: center; font-family: 'Inter', system-ui, sans-serif; padding: 4px 2px;">
+                <strong style="display:flex; align-items:center; justify-content:center; gap:6px; margin-bottom:12px; font-size: 14px; color: #f8fafc; font-weight: 600;">
+                    <i class="fa-solid fa-location-crosshairs" style="color: #38bdf8;"></i> Punto de Vuelo
+                </strong>
+                
+                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); padding: 8px; border-radius: 6px; margin-bottom: 8px;">
+                    <span style="font-size: 10px; color: #94a3b8; display:block; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 4px;">FORMATO ENAIRE</span>
+                    <span style="font-size: 13px; color: #38bdf8; display:block; font-family: monospace; font-weight: 600; letter-spacing: 0.5px;">${coordsStrEnaire}</span>
+                </div>
+                
+                <span style="font-size: 11px; color: #94a3b8; display:block; margin-bottom: 14px;">Estándar: ${coordsStrDecimal}</span>
+                
+                <div style="display:flex; justify-content:center; gap: 8px; flex-wrap: wrap;">
+                    <button onclick="window.copiarCoordenadas('${coordsStrEnaire}', this)" 
+                            style="background: #0A84FF; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(10, 132, 255, 0.25);">
+                        <i class="fa-regular fa-copy"></i> Copiar
                     </button>
-                    <button onclick="window.abrirEnaire()" 
-                            style="background:#0066cc; color:white; border:none; padding:6px 10px; border-radius:5px; cursor:pointer; font-size: 11px; font-weight:600;">
-                        ENAIRE <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    
+                    <button onclick="window.open('https://drones.enaire.es/?find=${encodeURIComponent(coordsStrEnaire)}', '_blank')" 
+                            style="background: #10b981; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);">
+                        <i class="fa-solid fa-map-location-dot"></i> Abrir ENAIRE
                     </button>
                 </div>
             </div>
