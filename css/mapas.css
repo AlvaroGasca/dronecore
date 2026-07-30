@@ -1,9 +1,89 @@
+/* --- BASE DE LA PÁGINA MAPAS --- */
+.page-mapas .section-light {
+    background: var(--bg-color);
+}
+
+.page-mapas .section-light-alt {
+    background: var(--surface-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.section-studio {
+    background:
+        radial-gradient(circle at 50% 0%, rgba(41, 151, 255, 0.14) 0%, rgba(10, 11, 14, 0) 34%),
+        linear-gradient(180deg, #0a0b0e 0%, #101116 100%);
+    color: #ffffff;
+    padding: 120px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.eyebrow-light {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.text-white {
+    color: #ffffff !important;
+}
+
+.lead-light {
+    color: rgba(255, 255, 255, 0.68);
+}
+
+.map-intel-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: -22px auto 28px;
+    max-width: 860px;
+}
+
+.map-intel-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 72px;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.map-intel-item strong,
+.map-intel-item span {
+    display: block;
+}
+
+.map-intel-item strong {
+    color: #ffffff;
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+}
+
+.map-intel-item span {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.78rem;
+}
+
+.intel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.05);
+}
+
+.intel-dot--green { background: #22c55e; }
+.intel-dot--amber { background: #eab308; }
+.intel-dot--red { background: #ef4444; }
+
 /* --- ESPACIO DE TRABAJO Y HUB DE LANZAMIENTO --- */
 .workspace-wrapper {
-    background: var(--bg-card);
-    border-radius: 16px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    background: rgba(18, 20, 26, 0.92);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.36);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -12,10 +92,10 @@
 }
 
 .workspace-header {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.045);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 12px 20px;
     display: flex;
     justify-content: space-between;
@@ -45,21 +125,21 @@
 .workspace-title {
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--text-muted);
-    letter-spacing: -0.01em;
+    color: rgba(255, 255, 255, 0.72);
+    letter-spacing: 0;
 }
 
 .btn-icon {
     background: transparent;
     border: none;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.58);
     cursor: pointer;
     font-size: 1rem;
     transition: color 0.2s;
 }
 
 .btn-icon:hover {
-    color: var(--text-primary);
+    color: #ffffff;
 }
 
 .workspace-body.launcher-body {
@@ -172,10 +252,10 @@
 
 /* --- WIDGET METEOROLÓGICO Y GEOLOCALIZACIÓN --- */
 .meteo-bar {
-    background: var(--surface-color);
-    border: 1px solid var(--border-color);
-    border-radius: 14px;
-    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.065);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 8px;
+    padding: 12px 14px;
     margin-bottom: 16px;
     display: flex;
     flex-wrap: wrap;
@@ -189,7 +269,7 @@
     align-items: center;
     gap: 8px;
     font-size: 0.88rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.68);
 }
 
 .meteo-item i {
@@ -197,7 +277,7 @@
 }
 
 .meteo-item strong {
-    color: var(--text-primary);
+    color: #ffffff;
 }
 
 .meteo-label {
@@ -208,7 +288,7 @@
     font-size: 0.82rem;
     font-weight: 500;
     padding-left: 8px;
-    border-left: 1px solid var(--border-color);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .meteo-badge {
@@ -221,9 +301,9 @@
 .badge-green { background: rgba(39, 201, 63, 0.15); color: #27c93f; }
 
 .btn-geo {
-    background: var(--surface-alt);
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #ffffff;
     padding: 6px 14px;
     border-radius: 8px;
     font-size: 0.82rem;
@@ -242,6 +322,11 @@
 }
 
 @media (max-width: 768px) {
+    .map-intel-strip {
+        grid-template-columns: 1fr;
+        margin-top: -10px;
+    }
+
     .meteo-bar {
         flex-direction: column;
         align-items: flex-start;
@@ -262,7 +347,7 @@
 .workspace-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 18px;
     margin-top: 20px;
 }
 
@@ -275,23 +360,24 @@
 
 /* Inspector Lateral */
 .workspace-inspector {
-    background: var(--bg-card, #1e293b);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(18, 20, 26, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 12px;
     display: flex;
     flex-direction: column;
-    height: 520px; /* Misma altura aprox del mapa */
+    height: 520px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
 }
 
 .inspector-header {
     padding: 14px 18px;
-    background: rgba(0, 0, 0, 0.25);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.045);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
 }
 
 .inspector-header h3 {
@@ -304,6 +390,22 @@
     gap: 8px;
 }
 
+.inspector-header p {
+    color: rgba(255, 255, 255, 0.48);
+    font-size: 0.76rem;
+    margin-top: 3px;
+}
+
+.coords-badge {
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 0.76rem;
+    white-space: nowrap;
+}
+
 .inspector-body {
     padding: 16px;
     overflow-y: auto;
@@ -311,6 +413,35 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+.empty-inspector-state {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 28px 16px;
+    color: #94a3b8;
+}
+
+.empty-inspector-state i {
+    color: #eab308;
+    font-size: 2rem;
+    margin-bottom: 14px;
+}
+
+.empty-inspector-state h4 {
+    color: #ffffff;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.empty-inspector-state p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin: 0 auto;
+    max-width: 330px;
 }
 
 /* Personalización del Scrollbar */
@@ -453,8 +584,8 @@
 #enaire-map {
     width: 100%;
     height: 600px;
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
     z-index: 1;
 }
 
@@ -724,6 +855,169 @@
     letter-spacing: 0.04em;
 }
 
+/* --- LECTURA OPERATIVA Y CHECKLIST --- */
+.decision-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.decision-card {
+    position: relative;
+    min-height: 290px;
+    background: var(--surface-color);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 30px;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.decision-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--decision-color);
+}
+
+.decision-card:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--decision-color) 42%, var(--border));
+    box-shadow: 0 22px 46px rgba(0, 0, 0, 0.12);
+}
+
+.decision-card--green { --decision-color: #22c55e; }
+.decision-card--amber { --decision-color: #eab308; }
+.decision-card--red { --decision-color: #ef4444; }
+
+.decision-kicker {
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.decision-card i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 28px 0 22px;
+    color: var(--decision-color);
+    background: color-mix(in srgb, var(--decision-color) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--decision-color) 22%, transparent);
+    border-radius: 8px;
+    font-size: 1.25rem;
+}
+
+.decision-card h3 {
+    color: var(--text-primary);
+    font-size: 1.22rem;
+    letter-spacing: 0;
+    margin-bottom: 10px;
+}
+
+.decision-card p {
+    color: var(--text-secondary);
+    font-size: 0.94rem;
+    line-height: 1.6;
+}
+
+.preflight-panel {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.9fr) 1.3fr;
+    gap: 34px;
+    align-items: start;
+    margin-top: 42px;
+    padding: 34px;
+    background: var(--surface-color);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.preflight-panel .eyebrow {
+    margin-bottom: 10px;
+}
+
+.preflight-panel h3 {
+    color: var(--text-primary);
+    font-size: clamp(1.35rem, 2.4vw, 2rem);
+    line-height: 1.15;
+    letter-spacing: 0;
+}
+
+.preflight-panel ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.preflight-panel li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.45;
+}
+
+.preflight-panel li i {
+    color: var(--accent);
+    margin-top: 3px;
+}
+
+/* --- CIERRE CTA --- */
+.section-cta-dark {
+    padding: 82px 0;
+    background: var(--bg-color);
+}
+
+.cta-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 36px;
+    padding: 48px;
+    background:
+        linear-gradient(135deg, rgba(41, 151, 255, 0.16), rgba(255, 255, 255, 0) 42%),
+        #0c0d10;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 22px 54px rgba(0, 0, 0, 0.26);
+}
+
+.cta-banner-content {
+    max-width: 620px;
+}
+
+.cta-banner-content h2 {
+    color: #ffffff;
+    font-size: clamp(1.7rem, 3vw, 2.45rem);
+    line-height: 1.12;
+    letter-spacing: 0;
+    margin: 6px 0 10px;
+}
+
+.cta-banner-content p {
+    color: rgba(255, 255, 255, 0.68);
+    line-height: 1.6;
+}
+
+.cta-banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.text-white {
+    color: #ffffff !important;
+}
+
 /* Colores de Iconos por Categoría */
 .text-red { color: #ef4444; }
 .text-orange { color: #f97316; }
@@ -801,3 +1095,72 @@
 
 .text-blue { color: #0A84FF; }
 .text-gold { color: #ffbd2e; }
+
+@media (max-width: 992px) {
+    .decision-grid,
+    .preflight-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .decision-card {
+        min-height: auto;
+    }
+
+    .preflight-panel ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-studio {
+        padding: 82px 0;
+    }
+
+    .workspace-inspector {
+        height: auto;
+        min-height: 420px;
+    }
+
+    #enaire-map {
+        height: 520px;
+    }
+
+    .inspector-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .coords-badge {
+        white-space: normal;
+    }
+
+    .decision-card,
+    .preflight-panel,
+    .cta-banner {
+        padding: 26px;
+    }
+
+    .cta-banner {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .cta-banner-actions {
+        width: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+    .map-intel-item {
+        min-height: 64px;
+    }
+
+    #enaire-map {
+        height: 440px;
+    }
+
+    .meteo-item,
+    .btn-geo {
+        font-size: 0.8rem;
+    }
+}

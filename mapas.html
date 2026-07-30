@@ -100,6 +100,30 @@
                     <p class="section-lead lead-light" style="margin: 0 auto;">Haz clic en cualquier punto del mapa para medir condiciones meteorológicas y analizar las geozonas oficiales de ENAIRE.</p>
                 </div>
 
+                <div class="map-intel-strip fade-up" aria-label="Estados posibles del análisis">
+                    <div class="map-intel-item">
+                        <span class="intel-dot intel-dot--green"></span>
+                        <div>
+                            <strong>Libre</strong>
+                            <span>Sin geozonas detectadas</span>
+                        </div>
+                    </div>
+                    <div class="map-intel-item">
+                        <span class="intel-dot intel-dot--amber"></span>
+                        <div>
+                            <strong>Condicionado</strong>
+                            <span>Permitido con requisitos</span>
+                        </div>
+                    </div>
+                    <div class="map-intel-item">
+                        <span class="intel-dot intel-dot--red"></span>
+                        <div>
+                            <strong>Crítico</strong>
+                            <span>No despegar sin permiso</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- BARRA METEOROLÓGICA Y GEOLOCALIZACIÓN -->
                 <div class="meteo-bar fade-up" id="meteo-widget">
                     <div class="meteo-item">
@@ -138,7 +162,7 @@
                                 <span class="dot green"></span>
                             </div>
                             <div class="workspace-title">
-                                <i class="fa-solid fa-map-pin"></i> Seleccionador de Coordenadas
+                                <i class="fa-solid fa-location-crosshairs"></i> Selector de punto operativo
                             </div>
                             <button class="btn-icon" id="reload-meteo" title="Actualizar datos" aria-label="Actualizar datos">
                                 <i class="fa-solid fa-rotate-right"></i>
@@ -150,18 +174,56 @@
                     <!-- COLUMNA DERECHA: INSPECTOR DE GEOZONAS -->
                     <div class="workspace-inspector" id="inspector-panel">
                         <div class="inspector-header">
-                            <h3><i class="fa-solid fa-list-check text-gold"></i> Ficha de Espacio Aéreo</h3>
-                            <span id="selected-coords-badge" style="font-size:0.78rem; color:#94a3b8; background:rgba(255,255,255,0.06); padding:3px 8px; border-radius:4px;">Haz clic en el mapa</span>
+                            <div>
+                                <h3><i class="fa-solid fa-list-check text-gold"></i> Ficha de Espacio Aéreo</h3>
+                                <p>Lectura simplificada de geozonas ENAIRE</p>
+                            </div>
+                            <span id="selected-coords-badge" class="coords-badge">Haz clic en el mapa</span>
                         </div>
                         <div class="inspector-body" id="restrictions-container">
-                            <div style="text-align:center; padding: 40px 20px; color:#94a3b8;">
-                                <i class="fa-solid fa-arrow-pointer" style="font-size:2rem; margin-bottom:12px; display:block; color:#f59e0b;"></i>
-                                <p style="font-size:0.95rem; margin:0;">Selecciona un punto en el mapa para analizar las geozonas ENAIRE registradas y sus requisitos legales.</p>
+                            <div class="empty-inspector-state">
+                                <i class="fa-solid fa-arrow-pointer"></i>
+                                <h4>Selecciona una ubicación</h4>
+                                <p>El panel traducirá las alertas oficiales en una recomendación operativa clara: libre, condicionado, trámite previo o zona crítica.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- LECTURA OPERATIVA -->
+        <section class="section section-light" id="lectura">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <p class="eyebrow">LECTURA OPERATIVA</p>
+                    <h2>Una alerta no siempre significa “prohibido”.</h2>
+                    <p class="section-lead">El mapa separa la señal oficial en niveles de decisión para que el piloto entienda qué hacer antes de despegar.</p>
+                </div>
+
+                <div class="decision-grid fade-up">
+                    <article class="decision-card decision-card--green">
+                        <span class="decision-kicker">01</span>
+                        <i class="fa-solid fa-circle-check"></i>
+                        <h3>Sin geozonas relevantes</h3>
+                        <p>No aparecen restricciones ENAIRE en el punto consultado. Siguen aplicando las reglas generales: 120 m AGL, VLOS, categoría correcta y respeto a personas.</p>
+                    </article>
+
+                    <article class="decision-card decision-card--amber">
+                        <span class="decision-kicker">02</span>
+                        <i class="fa-solid fa-file-signature"></i>
+                        <h3>Vuelo con condiciones</h3>
+                        <p>Puede ser viable si cumples requisitos: comunicación previa, coordinación, autorización del gestor, límites de altura o distancias a infraestructuras.</p>
+                    </article>
+
+                    <article class="decision-card decision-card--red">
+                        <span class="decision-kicker">03</span>
+                        <i class="fa-solid fa-ban"></i>
+                        <h3>Zona crítica</h3>
+                        <p>El punto cae en una zona prohibida, restringida crítica o con aviso temporal sensible. No despegar hasta validar la autorización oficial.</p>
+                    </article>
+                </div>
             </div>
         </section>
 
@@ -205,6 +267,36 @@
                         </div>
                         <h3>Zona UAS</h3>
                         <p class="bento-full">Área con restricción, prohibición o condición específica para drones publicada por la autoridad competente.</p>
+                    </div>
+                </div>
+
+                <div class="preflight-panel fade-up">
+                    <div>
+                        <p class="eyebrow">CHECKLIST FINAL</p>
+                        <h3>Antes de despegar, cruza mapa, meteo y operación.</h3>
+                    </div>
+                    <ul>
+                        <li><i class="fa-solid fa-location-dot"></i> Punto exacto de vuelo y altura prevista.</li>
+                        <li><i class="fa-solid fa-cloud-sun"></i> Viento, visibilidad y margen de batería.</li>
+                        <li><i class="fa-solid fa-id-card"></i> Registro, formación, seguro y categoría operacional.</li>
+                        <li><i class="fa-solid fa-file-signature"></i> Autorizaciones o comunicaciones si el mapa las exige.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="section section-cta-dark" id="siguiente-paso">
+            <div class="container">
+                <div class="cta-banner">
+                    <div class="cta-banner-content">
+                        <p class="eyebrow eyebrow-light">SIGUIENTE PASO</p>
+                        <h2>Convierte el punto del mapa en una operación segura.</h2>
+                        <p>Completa la lectura de espacio aéreo con normativa, formación y recursos oficiales antes del vuelo.</p>
+                    </div>
+                    <div class="cta-banner-actions">
+                        <a href="normativa.html" class="btn-apple-primary">Ver Normativa</a>
+                        <a href="recursos.html" class="btn-apple-link text-white">Recursos Oficiales <i class="fa-solid fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
