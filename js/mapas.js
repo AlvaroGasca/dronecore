@@ -575,35 +575,56 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------------
     async function fetchWeatherData(lat, lon, locationName = null) {
         try {
-            if (locationName) meteoCoords.textContent = locationName;
-            else meteoCoords.textContent = `${lat.toFixed(2)}°, ${lon.toFixed(2)}°`;
-
-            const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=visibility`;
-            const response = await fetch(apiUrl);
-            if (!response.ok) throw new Error("Error clima");
-
-            const data = await response.json();
-            const current = data.current_weather;
-
-            if (current && current.windspeed !== undefined) meteoWind.textContent = `${Math.round(current.windspeed)} km/h`;
-
-            if (data.hourly && data.hourly.visibility) {
-                const currentVisibilityMeters = data.hourly.visibility[0] || 10000;
-                const visibilityKm = Math.min(10, Math.round(currentVisibilityMeters / 1000));
-                meteoVis.textContent = `>${visibilityKm} km`;
+            // Update coordinate display
+            if (locationName) {
+                meteoCoords.textContent = locationName;
             } else {
-                meteoVis.textContent = `>10 km`;
+                meteoCoords.textContent = `${lat.toFixed(2)}°, ${lon.toFixed(2)}°`;
             }
 
-            const estimatedKp = Math.floor(Math.random() * 2) + 1;
-            meteoKp.textContent = `${estimatedKp} (Bueno)`;
-            meteoKp.className = "meteo-badge badge-green";
+            const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=visibility`;
 
+            // Primary request (CORS enabled)
+            let response = await fetch(apiUrl, { mode: 'cors' });
+            if (!response.ok) throw new Error('Network error');
+            let data = await response.json();
+            updateWeatherUI(data);
         } catch (error) {
-            meteoWind.textContent = "-- km/h";
-            meteoVis.textContent = "-- km";
-            meteoKp.textContent = "N/A";
+            // Fallback using a public CORS‑proxy (AllOrigins) for browsers that block the request
+            try {
+                const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=visibility`)}`;
+                const proxyResponse = await fetch(proxyUrl);
+                if (!proxyResponse.ok) throw new Error('Proxy error');
+                const proxyData = await proxyResponse.json();
+                updateWeatherUI(proxyData);
+            } catch (fallbackError) {
+                console.error('Weather fetch failed:', fallbackError);
+                meteoWind.textContent = '-- km/h';
+                meteoVis.textContent = '-- km';
+                meteoKp.textContent = 'N/A';
+                meteoKp.className = '';
+            }
         }
+    }
+
+    // Helper to populate UI elements from Open‑Meteo response
+    function updateWeatherUI(data) {
+        const current = data.current_weather;
+        if (current && current.windspeed !== undefined) {
+            meteoWind.textContent = `${Math.round(current.windspeed)} km/h`;
+        }
+
+        if (data.hourly && data.hourly.visibility) {
+            const currentVisibilityMeters = data.hourly.visibility[0] || 10000;
+            const visibilityKm = Math.min(10, Math.round(currentVisibilityMeters / 1000));
+            meteoVis.textContent = `>${visibilityKm} km`;
+        } else {
+            meteoVis.textContent = '>10 km';
+        }
+
+        const estimatedKp = Math.floor(Math.random() * 2) + 1;
+        meteoKp.textContent = `${estimatedKp} (Bueno)`;
+        meteoKp.className = 'meteo-badge badge-green';
     }
 
     fetchWeatherData(currentLat, currentLon, currentName);

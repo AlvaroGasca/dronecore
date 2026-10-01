@@ -9,6 +9,7 @@
     <title>Preguntas frecuentes sobre drones | DroneCore</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/pages.css">
 </head>
 
 <body>
@@ -44,50 +45,108 @@
             <div class="container">
                 <div class="search-wrap"><i class="fa-solid fa-magnifying-glass"></i><input id="site-search"
                         type="search" placeholder="Busca una pregunta" aria-label="Buscar preguntas"></div>
+                <div class="faq-filters">
+                    <button class="faq-filter-btn is-active" data-cat="all">Todas</button>
+                    <button class="faq-filter-btn" data-cat="espacio">Espacio aéreo</button>
+                    <button class="faq-filter-btn" data-cat="privacidad">Privacidad</button>
+                    <button class="faq-filter-btn" data-cat="formacion">Formación</button>
+                    <button class="faq-filter-btn" data-cat="tecnico">Técnico</button>
+                    <button class="faq-filter-btn" data-cat="seguro">Seguro y registro</button>
+                </div>
                 <div data-search-items>
-                    <details class="faq-item" data-search-item>
+                    <details class="faq-item" data-search-item data-cat="espacio">
                         <summary>¿Puedo volar en una playa?</summary>
                         <p>No lo des por hecho. Comprueba ENAIRE Drones, posibles zonas protegidas y ordenanzas locales.
                             Además, evita sobrevolar a bañistas o concentraciones de personas y protege su privacidad.
                         </p>
                     </details>
-                    <details class="faq-item" data-search-item>
-                        <summary>¿Necesito seguro?</summary>
-                        <p>Puede ser obligatorio según la operación y resulta muy recomendable incluso cuando no lo sea.
-                            Revisa la normativa vigente y el alcance real de la póliza antes de volar.</p>
-                    </details>
-                    <details class="faq-item" data-search-item>
-                        <summary>¿Puedo grabar a personas?</summary>
-                        <p>La cámara no te permite captar o publicar imágenes libremente. Minimiza la captación, respeta
-                            la intimidad y la normativa de protección de datos, especialmente con menores.</p>
-                    </details>
-                    <details class="faq-item" data-search-item>
+                    <details class="faq-item" data-search-item data-cat="espacio">
                         <summary>¿Puedo volar en un parque?</summary>
                         <p>Depende del espacio aéreo, las restricciones locales y las personas presentes. Un parque
                             puede estar permitido desde el punto de vista aeronáutico y restringido por una ordenanza, o
-                            al revés.</p>
+                            al revés. Consulta siempre ambas fuentes.</p>
                     </details>
-                    <details class="faq-item" data-search-item>
+                    <details class="faq-item" data-search-item data-cat="espacio">
+                        <summary>¿Puedo superar los 120 metros?</summary>
+                        <p>La altura máxima general de categoría abierta es 120 m respecto al punto más cercano de la
+                            superficie. Hay matices y excepciones, pero no debes asumirlos sin una planificación
+                            documentada y condiciones aplicables. Consulta ENAIRE Drones para cada vuelo concreto.</p>
+                    </details>
+                    <details class="faq-item" data-search-item data-cat="espacio">
                         <summary>¿Puedo volar de noche?</summary>
                         <p>En categoría abierta puede ser posible bajo condiciones específicas, incluida una luz verde
                             intermitente en la aeronave. Comprueba todos los requisitos vigentes y valora si el entorno
                             permite mantener seguridad y referencia visual.</p>
                     </details>
-                    <details class="faq-item" data-search-item>
-                        <summary>¿Qué licencia necesito?</summary>
+                    <details class="faq-item" data-search-item data-cat="espacio">
+                        <summary>¿Qué ocurre si hay una zona CTR cerca?</summary>
+                        <p>Una CTR (zona de control) implica espacio aéreo controlado. Volar en ella sin autorización
+                            es ilegal. En algunos casos puede solicitarse coordinación a través de ENAIRE. Consulta el
+                            mapa antes de planificar cualquier operación cerca de aeropuertos o helipuertos.</p>
+                    </details>
+                    <details class="faq-item" data-search-item data-cat="privacidad">
+                        <summary>¿Puedo grabar a personas?</summary>
+                        <p>La cámara no te permite captar o publicar imágenes libremente. Minimiza la captación, respeta
+                            la intimidad y la normativa de protección de datos, especialmente con menores. Publicar
+                            imágenes identificables sin consentimiento puede acarrear responsabilidad civil o penal.</p>
+                    </details>
+                    <details class="faq-item" data-search-item data-cat="privacidad">
+                        <summary>¿Puedo publicar vídeos de mis vuelos en redes sociales?</summary>
+                        <p>Puedes compartir tus vuelos si cumples la normativa y respetas la privacidad de terceros.
+                            Evita imágenes de personas identificables sin consentimiento y no muestres ubicaciones
+                            sensibles. En operaciones profesionales revisa los acuerdos contractuales previos.</p>
+                    </details>
+                    <details class="faq-item" data-search-item data-cat="formacion">
+                        <summary>¿Qué certificado necesito para empezar?</summary>
                         <p>En muchos casos se empieza con A1/A3. Según el dron, la cercanía a personas y la operación,
                             puede hacer falta A2, formación STS u otro marco. Consulta la sección de titulaciones para
-                            orientarte.</p>
+                            orientarte sobre el itinerario completo.</p>
                     </details>
-                    <details class="faq-item" data-search-item>
-                        <summary>¿Puedo superar los 120 metros?</summary>
-                        <p>La altura máxima general de categoría abierta es 120 m respecto al punto más cercano de la
-                            superficie. Hay matices y excepciones, pero no debes asumirlos sin una planificación
-                            documentada y condiciones aplicables.</p>
+                    <details class="faq-item" data-search-item data-cat="formacion">
+                        <summary>¿El certificado A1/A3 caduca?</summary>
+                        <p>El certificado A1/A3 tiene una validez de 5 años. Pasado ese plazo, deberás renovarlo a
+                            través de AESA. Guarda siempre el documento original o el PDF descargable para acreditarlo
+                            durante un vuelo si fuera necesario.</p>
                     </details>
+                    <details class="faq-item" data-search-item data-cat="formacion">
+                        <summary>¿Puedo trabajar como piloto profesional solo con A1/A3?</summary>
+                        <p>Depende del tipo de operación. Muchos trabajos de fotografía aérea o inspección requieren
+                            certificados adicionales, operador UAS registrado, seguro de responsabilidad civil y en
+                            ocasiones una declaración de operación específica ante AESA.</p>
+                    </details>
+                    <details class="faq-item" data-search-item data-cat="tecnico">
+                        <summary>¿Mi dron necesita llevar matrícula?</summary>
+                        <p>Los UAS con masa igual o superior a 250 g, o los que tengan cámara, deben llevar identificación
+                            directa del operador. El número de registro del operador UAS expedido por AESA debe estar
+                            visible. Consulta los detalles según la clase de tu aeronave.</p>
+                    </details>
+                    <details class="faq-item" data-search-item data-cat="tecnico">
+                        <summary>¿Qué pasa si pierdo el enlace con el dron en vuelo?</summary>
+                        <p>La mayoría de los drones actuales ejecutan un procedimiento de retorno al home (RTH) o
+                            aterrizaje automático al perder señal. Configura siempre el comportamiento de pérdida de
+                            enlace antes del despegue y verifica que el RTH tiene la altura correcta para evitar
+                            obstáculos.</p>
+                    </details>
+                    <details class="faq-item" data-search-item data-cat="seguro">
+                        <summary>¿Necesito seguro?</summary>
+                        <p>Puede ser obligatorio según la operación y resulta muy recomendable incluso cuando no lo sea.
+                            Revisa la normativa vigente y el alcance real de la póliza: no todos los seguros cubren vuelos
+                            comerciales o pérdida del dron.</p>
+                    </details>
+                    <details class="faq-item" data-search-item data-cat="seguro">
+                        <summary>¿Cómo me registro como operador UAS en AESA?</summary>
+                        <p>El registro se realiza de forma online a través del portal de AESA. Necesitas identificación
+                            personal, datos de contacto y aceptar las condiciones. Una vez registrado, obtienes un número
+                            de operador que debes mostrar en tu aeronave y usar en tus declaraciones de operación.</p>
+                    </details>
+                </div>
+                <div class="faq-empty" id="faq-empty">
+                    <i class="fa-regular fa-face-frown-open"></i>
+                    <p>No hay preguntas que coincidan con tu búsqueda.<br>Prueba con otra palabra clave.</p>
                 </div>
             </div>
         </section>
+
     </main>
     <footer class="site-footer">
         <div class="container site-footer__inner">
@@ -99,6 +158,7 @@
         </div>
     </footer><button class="back-to-top" aria-label="Volver arriba"><i class="fa-solid fa-arrow-up"></i></button>
     <script src="js/main.js" defer></script>
+    <script src="js/pages.js" defer></script>
 </body>
 
 </html>
